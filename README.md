@@ -14,3 +14,13 @@ step 5:git commit -m "Initial commit
 step 6:git remote add origin https://github.com/phuczs/WebDevFinalProject.git
 
 step 7:git push -u origin master
+
+
+To push code:
+
+1.git add .
+
+2.git commit -m "your notes"
+
+3.git push
+
