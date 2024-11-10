@@ -22,10 +22,7 @@ app.set('view engine', 'hbs');
 app.set('views', './views');
 
 app.get('/', function (req, res) {
-    res.render('home', {
-        // layout: false,
-        // layout: 'anotherLayout',
-      });
+    res.render('home');
     });
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
