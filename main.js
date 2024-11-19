@@ -30,6 +30,9 @@ app.get('/test', function (req, res) {
   res.sendFile(__dirname + '/test.html');
 });
 
+// import articleRouter from './routes/article.route.js';
+// app.use('/admin/articles',articleRouter);
+
 
 app.listen(3000, function () {
     console.log('Server started on http://localhost:3000');
