@@ -4,8 +4,232 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="scripts.js"></script>
 </head>
 <body>
-    
+    <div class="card">
+        <div class="card-body">
+            <div class="header-content">
+                <div class="button-container">
+                    <button class="btn btn-register">Đăng ký</button>
+                    <button class="btn btn-login">Đăng nhập</button>
+                </div>
+                <a href="test.html" class="logo-container">
+                    <img src="./bbc.png" alt="bbc logo" style="width: 100px; height: auto;">  
+                </a>
+                <div class="menu-container">
+                  <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                    ☰
+                  </a>
+                  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                      <div class="search-container">
+                        <input type="text" placeholder="Tìm kiếm..." class="search-box">
+                        <span class="search-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                          </svg>
+                        </span>
+                      </div>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                      <div class="dropdown mt-3">
+                        <li class="nav-item dropdown home-page">
+                          <a class="nav-link" aria-current="page" href="#">
+                            Trang chủ
+                          </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Thời sự</a>
+                          <ul class="dropdown-menu bg-light">
+                              <li><a class="dropdown-item" href="#">Chính trị</a></li>
+                              <li><a class="dropdown-item" href="#">Dân sinh</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Thể thao
+                          </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Kinh doanh
+                          </a>
+                          <ul class="dropdown-menu bg-light">
+                            <li><a class="dropdown-item" href="#">Nông sản</a></li>
+                            <li><a class="dropdown-item" href="#">Hải sản</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Văn hóa
+                          </a>
+                          <ul class="dropdown-menu bg-light">
+                            <li><a class="dropdown-item" href="#">Phim</a></li>
+                            <li><a class="dropdown-item" href="#">Nhạc</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Khoa học
+                          </a>
+                          <ul class="dropdown-menu bg-light">
+                            <li><a class="dropdown-item" href="#">Phát minh</a></li>
+                            <li><a class="dropdown-item" href="#">Ứng dụng</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Du lịch
+                          </a>
+                          <ul class="dropdown-menu bg-light">
+                            <li><a class="dropdown-item" href="#">Ẩm thực</a></li>
+                            <li><a class="dropdown-item" href="#">Điểm đến</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Nghệ thuật
+                          </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Thế giới
+                          </a>
+                          <ul class="dropdown-menu bg-light">
+                            <li><a class="dropdown-item" href="#">Tư liệu</a></li>
+                            <li><a class="dropdown-item" href="#">Quân sự</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Giải trí
+                          </a>
+                          <ul class="dropdown-menu bg-light">
+                            <li><a class="dropdown-item" href="#">Game</a></li>
+                            <li><a class="dropdown-item" href="#">Sách</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sức khỏe
+                          </a>
+                          <ul class="dropdown-menu bg-light">
+                            <li><a class="dropdown-item" href="#">Tin tức</a></li>
+                            <li><a class="dropdown-item" href="#">Vaccine</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Xe
+                          </a>
+                          <ul class="dropdown-menu bg-light">
+                            <li><a class="dropdown-item" href="#">Thị trường</a></li>
+                            <li><a class="dropdown-item" href="#">Xe cổ</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Thời tiết
+                          </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Trái Đất
+                          </a>
+                          <ul class="dropdown-menu bg-light">
+                            <li><a class="dropdown-item" href="#">Thiên nhiên</a></li>
+                            <li><a class="dropdown-item" href="#">Động vật</a></li>
+                          </ul>
+                        </li>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-white">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                        <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+                    </svg>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Thời sự</a>
+                <ul class="dropdown-menu bg-light">
+                    <li><a class="dropdown-item" href="#">Chính trị</a></li>
+                    <li><a class="dropdown-item" href="#">Dân sinh</a></li>
+                  </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Thể thao
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Kinh doanh
+                </a>
+                <ul class="dropdown-menu bg-light">
+                  <li><a class="dropdown-item" href="#">Nông sản</a></li>
+                  <li><a class="dropdown-item" href="#">Hải sản</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Văn hóa
+                </a>
+                <ul class="dropdown-menu bg-light">
+                  <li><a class="dropdown-item" href="#">Phim</a></li>
+                  <li><a class="dropdown-item" href="#">Nhạc</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Khoa học
+                </a>
+                <ul class="dropdown-menu bg-light">
+                  <li><a class="dropdown-item" href="#">Phát minh</a></li>
+                  <li><a class="dropdown-item" href="#">Ứng dụng</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Du lịch
+                </a>
+                <ul class="dropdown-menu bg-light">
+                  <li><a class="dropdown-item" href="#">Ẩm thực</a></li>
+                  <li><a class="dropdown-item" href="#">Điểm đến</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Nghệ thuật
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Thế giới
+                </a>
+                <ul class="dropdown-menu bg-light">
+                  <li><a class="dropdown-item" href="#">Tư liệu</a></li>
+                  <li><a class="dropdown-item" href="#">Quân sự</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 </body>
 </html>
