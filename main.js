@@ -4,6 +4,8 @@ import numeral from 'numeral';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
+import accountRouter from './routes/account.route.js'
+
 const app = express();
 
 app.use(express.urlencoded({
@@ -34,7 +36,7 @@ app.get('/test', function (req, res) {
 
 // import articleRouter from './routes/article.route.js';
 // app.use('/admin/articles',articleRouter);
-
+app.use('/account', accountRouter);
 
 app.listen(3000, function () {
     console.log('Server started on http://localhost:3000');
