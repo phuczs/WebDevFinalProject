@@ -11,7 +11,7 @@
  Target Server Version : 100432 (10.4.32-MariaDB)
  File Encoding         : 65001
 
- Date: 29/11/2024 14:17:43
+ Date: 29/11/2024 14:52:55
 */
 
 SET NAMES utf8mb4;
@@ -96,8 +96,8 @@ CREATE TABLE `articles`  (
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `abstract` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp,
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
   `category_id` int NULL DEFAULT NULL,
   `author_id` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
@@ -174,13 +174,15 @@ CREATE TABLE `users`  (
   `pen_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `role` enum('admin','editor','writer','subscriber') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `permission` int NOT NULL,
+  `dob` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `email`(`email` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
+INSERT INTO `users` VALUES (1, 'admin', 'admin', '123@abc', '1234', 1, '2004-12-26 00:00:00');
 
 SET FOREIGN_KEY_CHECKS = 1;
