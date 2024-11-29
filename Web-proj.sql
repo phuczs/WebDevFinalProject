@@ -67,6 +67,17 @@ CREATE TABLE IF NOT EXISTS `article_tags` (
     FOREIGN KEY (`tag_id`) REFERENCES `tags`(`id`)
 );
 
+CREATE TABLE IF NOT EXISTS `users` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+	`password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+	`name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+	`email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+	`dob` date NOT NULL,
+	`permission` int(11) NOT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 -- Insert main categories
 INSERT INTO `categories` (`name`) VALUES 
 ('World'), 
