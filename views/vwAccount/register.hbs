@@ -1,0 +1,91 @@
+{{#section 'css'}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+
+{{/section}}
+{{#section 'js'}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js">
+</script>
+<script> //ktra k gui lien` $('') = doc.querysecl, .on = addeventlist4ener
+    $('#frmRegister').on('submit', function(e) {
+        e.preventDefault();
+
+        const username = $('#txtUsername').val();
+        if(username.length === 0) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Username is required!',
+                icon: 'error',
+            })
+            return;
+        }
+        const password = $('#txtPassword').val();
+        const cfrmpassword = $('#txtConfirmPassword').val();
+        if(password !== cfrmpassword) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Password needs to be similar!',
+                icon: 'error',
+            })
+            return;
+        }
+        ///de them nua
+
+        $('frmRegister').off('submit').submit(); // OFF qtrog de cho qua k co off thi loop submit crash may'    
+    });
+    $('#txtDOB').datetimepicker({
+        timepicker: false,
+        format: 'd/m/Y',
+        mask: true
+    });
+</script>
+{{/section}}
+
+
+<form id="frmRegister" action="" method="post">
+    <div class="card mb-3 mt-3 bg-dark text-white">
+        <h5 class="card-header">
+            Account Registration
+        </h5>
+        <div class="card-body">
+            <h5 class="mb-3">Account Information</h5>
+            <div class="form-group">
+              <label for="txtUsername">Username</label>
+              <input type="text" name="username" id="txtUsername" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="txtPassword">Password</label>
+              <input type="password" name="raw_password" id="txtPassword" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="txtConfirmPassword">Confirm Password</label>
+              <input type="password" name="" id="txtConfirmPassword" class="form-control" placeholder="">
+            </div>
+
+            <h5>Personal Information</h5>
+            <div class="form-group">
+              <label for="txtName">Name</label>
+              <input type="text" name="name" id="txtName" class="form-control" placeholder="">
+            </div>
+                        <div class="form-group">
+              <label for="txtEmail">Email</label>
+              <input type="text" name="email" id="txtName" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="txtDOB">Date of Birth</label>
+              <input type="text" name="raw_dob" id="txtDOB" class="form-control" placeholder="">
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            <a class="btn btn-outline-success" href="/" role="button">
+                Home 
+                <i class="bi bi-house-fill"></i>
+            </a>
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-person-plus-fill"></i>
+                Register
+            </button>
+        </div>
+    </div>
+</form>
