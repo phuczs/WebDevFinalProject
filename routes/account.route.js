@@ -7,10 +7,11 @@ router.get('/register', function(req, res){
 }); 
 
 import bcrypt from 'bcryptjs';
+import moment from 'moment';
 import userService from '../services/user.service.js';
 router.post('/register', async function(req, res){
     const hash_password = bcrypt.hashSync(req.body.raw_password, 8) //big = slow
-    const ymd_dob = req.body.raw_dob; // year-month-day
+    const ymd_dob = moment(req.body.raw_dob, 'DD/MM/YYYY').format('YYYY-MM-DD');
     const entity = {
         username: req.body.username,
         password: hash_password,
@@ -66,5 +67,16 @@ router.get('/profile', isAuth, function(req, res){
 router.post('/change-password', isAuth, async function(req, res){
     res.render('vwAccount/change-password');
 });
+
+router.get('/is-available', async function(req, res) {
+  const username = req.query.username;
+  const user = await userService.findByUsername(username);
+  if (!user) {
+    return res.json(true);
+  }
+  return res.json(false);
+});
+
+
 
 export default router;

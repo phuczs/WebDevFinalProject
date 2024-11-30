@@ -20,23 +20,43 @@
             })
             return;
         }
+
         const password = $('#txtPassword').val();
-        const cfrmpassword = $('#txtConfirmPassword').val();
-        if(password !== cfrmpassword) {
+        if (password.length === 0) {
             Swal.fire({
                 title: 'Error!',
-                text: 'Password needs to be similar!',
+                text: 'Password is required!',
                 icon: 'error',
             })
             return;
         }
+        const cfrmpassword = $('#txtConfirmPassword').val();
+        if (password !== cfrmpassword) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Password and Confirm Password do not match!',
+                icon: 'error',
+            })
+            return;
+        }
+        
         ///de them nua
-            
-        $('#frmRegister').off('submit').submit(); // OFF qtrog de cho qua k co off thi loop submit crash may'    
+        
+        $.getJSON(`/account/is-available?username=${username}`, function(data) {
+            if (data === false) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Username is already taken.',
+                    icon: 'error'
+                })
+                return;
+            }
+            $('#frmRegister').off('submit').submit();
+        })
     });
     $('#txtDOB').datetimepicker({
         timepicker: false,
-        format: 'Y-m-d',
+        format:'d/m/Y',
         mask: true
     });
 </script>
