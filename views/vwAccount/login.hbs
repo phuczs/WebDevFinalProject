@@ -1,0 +1,72 @@
+<form method="POST">
+{{#if showErrors}}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Login failed!</strong> Invalid username or password.
+  </div>
+  
+  <script>
+    $(".alert").alert();
+  </script>
+{{/if}}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card bg-dark text-white">
+        <div class="card-header text-center">
+          <h4>Login</h4>
+        </div>
+        <div class="card-body">
+          
+            <!-- Username -->
+            <div class="form-group mb-3">
+              <label for="txtUsername">Username</label>
+              <input type="text" 
+                class="form-control" 
+                id="txtUsername" 
+                name="username" 
+                placeholder="Enter username"
+                required>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group mb-3">
+              <label for="txtPassword">Password</label>
+              <input type="password" 
+                class="form-control" 
+                id="txtPassword" 
+                name="raw_password" 
+                placeholder="Enter password"
+                required>
+            </div>
+
+            <!-- Submit and Home Buttons -->
+            <div class="d-grid gap-2">
+              <div class="row">
+                <div class="col">
+                  <button type="submit" class="btn btn-primary w-100">
+                    Login
+                  </button>
+                </div>
+                <div class="col">
+                  <a href="/" class="btn btn-secondary w-100">
+                    Go Back Home
+                  </a>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <!-- Register Link -->
+          <div class="text-center mt-3">
+            <p>Don't have an account? 
+              <a href="/account/register" class="text-decoration-none">Register here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

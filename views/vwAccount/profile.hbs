@@ -1,0 +1,209 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form action="" method="post">
+        <div class="card shadow-lg border-0">
+          <div class="profile-header text-center">
+            <div class="avatar-wrapper">
+              <div class="avatar-circle mx-auto">
+                <i class="bi bi-person-circle"></i>
+              </div>
+              <div class="avatar-badge">
+                <i class="bi bi-pencil-fill"></i>
+              </div>
+            </div>
+            <h3 class="profile-title">Edit Profile</h3>
+            <p class="profile-subtitle">Update your personal information below</p>
+            <div class="profile-divider">
+              <span class="line"></span>
+              <i class="bi bi-gear-fill text-primary"></i>
+              <span class="line"></span>
+            </div>
+          </div>
+
+          <div class="card-body p-4">
+            <div class="form-group mb-4">
+              <label for="txtUsername" class="form-label fw-bold">
+                <i class="bi bi-person-badge me-2 text-primary"></i>Username
+              </label>
+              <input type="text" 
+                value="{{this.user.username}}" 
+                name="" 
+                id="txtUsername" 
+                class="form-control form-control-lg" 
+                readonly>
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="txtName" class="form-label fw-bold">
+                <i class="bi bi-person me-2 text-primary"></i>Name
+              </label>
+              <input type="text" 
+                value="{{this.user.name}}" 
+                name="" 
+                id="txtName" 
+                class="form-control form-control-lg">
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="txtEmail" class="form-label fw-bold">
+                <i class="bi bi-envelope me-2 text-primary"></i>Email
+              </label>
+              <input type="text" 
+                value="{{this.user.email}}" 
+                name="" 
+                id="txtEmail" 
+                class="form-control form-control-lg">
+            </div>
+          </div>
+
+          <div class="card-footer bg-white border-0 p-4">
+            <button type="submit" class="btn btn-primary btn-lg w-100">
+              <i class="bi bi-check2 me-2"></i>
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+.profile-header {
+  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+  padding: 3rem 2rem 2rem;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 100px;
+  margin: 0 auto 1.5rem;
+}
+
+.avatar-circle {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, #4e73df, #224abe);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #ffffff;
+  box-shadow: 0 5px 15px rgba(78, 115, 223, 0.2);
+}
+
+.avatar-circle i {
+  font-size: 3rem;
+  color: white;
+}
+
+.avatar-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #4e73df;
+}
+
+.avatar-badge i {
+  font-size: 0.9rem;
+  color: #4e73df;
+}
+
+.profile-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.profile-subtitle {
+  color: #6c757d;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 1rem;
+}
+
+.profile-divider .line {
+  height: 2px;
+  width: 60px;
+  background: linear-gradient(to right, transparent, #e9ecef);
+}
+
+.profile-divider .line:last-child {
+  background: linear-gradient(to left, transparent, #e9ecef);
+}
+
+.profile-divider i {
+  font-size: 1rem;
+}
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.form-control {
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  padding: 12px 15px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.1);
+}
+
+.form-control[readonly] {
+  background-color: #f8f9fa;
+  border-color: #e9ecef;
+}
+
+.btn {
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #4e73df, #224abe);
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(78, 115, 223, 0.3);
+}
+
+.form-label {
+  color: #495057;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-header {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.bi {
+  font-size: 1.1rem;
+}
+</style>
