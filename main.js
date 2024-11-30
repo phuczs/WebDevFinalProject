@@ -1,5 +1,6 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
+import session from 'express-session';
 import numeral from 'numeral';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -8,6 +9,13 @@ import { fileURLToPath } from 'url';
 import accountRouter from './routes/account.route.js'
 
 const app = express();
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'SECRET_KEY',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {  }
+}));
 
 app.use(express.urlencoded({
     extended: true
@@ -28,7 +36,18 @@ app.set('views', './views');
 
 app.use('/static', express.static('static'));
 
+app.use(function (req, res, next) {
+  if (req.session.auth===undefined) {
+    req.session.auth = false;
+  }
+  res.locals.auth = req.session.auth;
+  res.locals.authUser = req.session.authUser;
+  next();
+});
+
 app.get('/', function (req, res) {
+
+  console.log(req.session.auth);
     res.render('home');
     });
 

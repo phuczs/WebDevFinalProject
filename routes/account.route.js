@@ -27,21 +27,44 @@ router.get('/login', function(req, res){
     res.render('vwAccount/login');
 });
 
-router.post('/login', function(req, res){
-
-});
-
-
-router.get('/is-available', async function(req, res) {
-    const username = req.query.username;
-    const user = await userService.findByUsername(username)
+router.post('/login',async function(req, res){
+    const user = await userService.findByUsername(req.body.username);
     if (!user) {
-        return res.json(true);
-    }    
-    res.json(false);
+      return res.render('vwAccount/login', {
+        showErrors: true,
+      });
+    }
+    const ret = bcrypt.compareSync(req.body.raw_password, user.password);
+    if (!ret) {
+      return res.render('vwAccount/login', {
+        showErrors: true,
+      });
+    }
+  
+    req.session.auth = true;
+    req.session.authUser = user;
+    // const retUrl=req.session.retUrl||'/';
+    // req.session.retUrl=null;
+    res.redirect('/');
 });
 
+function isAuth(req,res,next){
+    if(!req.session.auth){
+      req.session.retUrl=req.originalUrl;  //luu lai trc khi kick user
+      return res.redirect('/account/login');
+    }
+    next();
+  }
 
+router.get('/profile', isAuth, function(req, res){
+    res.render('vwAccount/profile', {
+        user: req.session.authUser,
+    });
 
+});
+
+router.post('/change-password', isAuth, async function(req, res){
+    res.render('vwAccount/change-password');
+});
 
 export default router;
