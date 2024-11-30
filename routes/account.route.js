@@ -31,4 +31,17 @@ router.post('/login', function(req, res){
 
 });
 
+
+router.get('/is-available', async function(req, res) {
+    const username = req.query.username;
+    const user = await userService.findByUsername(username)
+    if (!user) {
+        return res.json(true);
+    }    
+    res.json(false);
+});
+
+
+
+
 export default router;
