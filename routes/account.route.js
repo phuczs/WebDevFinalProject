@@ -44,8 +44,14 @@ router.post('/login',async function(req, res){
   
     req.session.auth = true;
     req.session.authUser = user;
-    // const retUrl=req.session.retUrl||'/';
-    // req.session.retUrl=null;
+    const retUrl=req.session.retUrl||'/';
+    req.session.retUrl=null;
+    res.redirect(retUrl);
+});
+
+router.post('/logout', function(req, res){
+    req.session.auth = false;
+    req.session.authUser = null;
     res.redirect('/');
 });
 
