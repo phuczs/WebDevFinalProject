@@ -41,7 +41,6 @@ router.post('/login',async function(req, res){
         showErrors: true,
       });
     }
-  
     req.session.auth = true;
     req.session.authUser = user;
     const retUrl=req.session.retUrl||'/';
@@ -70,9 +69,48 @@ router.get('/profile', isAuth, function(req, res){
 
 });
 
-router.post('/change-password', isAuth, async function(req, res){
-    res.render('vwAccount/change-password');
+router.get('/change-password', isAuth, async function (req, res) {
+  res.render('vwAccount/change-password')
 });
+
+router.post('/change-password', isAuth, async function(req, res) {
+  const { oldPassword, newPassword } = req.body;
+  const user = req.session.authUser; // Access the logged-in user from the session
+
+  try {
+      // Compare the old password with the stored hash
+      const isMatch = bcrypt.compareSync(oldPassword, user.password);
+      if (!isMatch) {
+          return res.render('vwAccount/change-password', {
+              errorMessage: 'Old password does not match!'
+          });
+      }
+
+      // Update the password only if the new password is different from the old password
+      if (oldPassword === newPassword) {
+          return res.render('vwAccount/change-password', {
+              errorMessage: 'New password cannot be the same as the old password!'
+          });
+      }
+
+      const updatedEntity = { password: bcrypt.hashSync(newPassword, 8) };
+
+      // Update the user's password in the database
+      await userService.update(user.username, updatedEntity);
+
+      // Redirect to profile or show a success message
+      res.render('vwAccount/change-password', {
+          successMessage: 'Your password has been updated successfully!'
+      });
+
+  } catch (error) {
+      console.error('Error updating password:', error);
+      return res.render('vwAccount/change-password', {
+          errorMessage: 'There was an error updating your password. Please try again.'
+      });
+  }
+});
+
 
 router.get('/is-available', async function(req, res) {
   const username = req.query.username;
