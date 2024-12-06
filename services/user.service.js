@@ -34,6 +34,15 @@ export default {
         }
     },
 
+    // New function to update user profile
+    async updateProfile(username, { name, email }) {
+        const updatedEntity = {};
+        if (name) updatedEntity.name = name;
+        if (email) updatedEntity.email = email;
+
+        return await this.update(username, updatedEntity);
+    },
+
     // Update only password for a user
     async updatePassword(username, passwordHash) {
         const trx = await db.transaction();
@@ -47,5 +56,6 @@ export default {
             console.error('Error updating password:', error);
             throw new Error('Error updating password');
         }
-    }
+    },
+    
 };

@@ -5,8 +5,10 @@ import numeral from 'numeral';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
+import categoryRouter from './routes/category.route.js';
+import accountRouter from './routes/account.route.js';
 
-import accountRouter from './routes/account.route.js'
+import categoryService from './services/category.service.js';
 
 const app = express();
 app.set('trust proxy', 1) // trust first proxy
@@ -36,6 +38,12 @@ app.set('views', './views');
 
 app.use('/static', express.static('static'));
 
+app.use(async function (req, res, next) {
+  const categories = await categoryService.findAll();
+  res.locals.lcCategories = categories;
+  next();
+});
+
 app.use(function (req, res, next) {
   if (req.session.auth===undefined) {
     req.session.auth = false;
@@ -59,6 +67,7 @@ app.get('/test', function (req, res) {
 // import articleRouter from './routes/article.route.js';
 // app.use('/admin/articles',articleRouter);
 app.use('/account', accountRouter);
+app.use('/admin/categories',categoryRouter);
 
 app.listen(3000, function () {
     console.log('Server started on http://localhost:3000');
