@@ -119,37 +119,37 @@ router.post('/change-password', isAuth, async function(req, res) {
 });
 
 router.post('/profile', isAuth, async function(req, res) {
-    const { name, email } = req.body;
-    const user = req.session.authUser;
+  const { name, email } = req.body;
+  const user = req.session.authUser;
 
-    console.log('Profile update request received:', { name, email }); // Log the incoming data
+  console.log('Profile update request received:', { name, email }); // Log the incoming data
 
-    // Create an updated entity with the new values
-    const updatedEntity = {
-        name: name || user.name, // Use existing name if not provided
-        email: email || user.email // Use existing email if not provided
-    };
+  // Create an updated entity with the new values
+  const updatedEntity = {
+      name: name || user.name, // Use existing name if not provided
+      email: email || user.email // Use existing email if not provided
+  };
 
-    try {
-        // Update the user's profile in the database
-        await userService.update(user.username, updatedEntity);
-        console.log('Profile updated in database:', updatedEntity); // Log successful update
+  try {
+      // Update the user's profile in the database
+      await userService.update(user.username, updatedEntity);
+      console.log('Profile updated in database:', updatedEntity); // Log successful update
 
-        // Update the session user data
-        req.session.authUser = { ...user, ...updatedEntity };
+      // Update the session user data
+      req.session.authUser = { ...user, ...updatedEntity };
 
-        // Redirect to profile with a success message
-        res.render('vwAccount/profile', {
-            user: req.session.authUser,
-            successMessage: 'Your profile has been updated successfully!'
-        });
-    } catch (error) {
-        console.error('Error updating profile:', error);
-        return res.render('vwAccount/profile', {
-            user: req.session.authUser,
-            errorMessage: 'There was an error updating your profile. Please try again.'
-        });
-    }
+      // Redirect to profile with a success message
+      res.render('vwAccount/profile', {
+          user: req.session.authUser,
+          successMessage: 'Your profile has been updated successfully!'
+      });
+  } catch (error) {
+      console.error('Error updating profile:', error);
+      return res.render('vwAccount/profile', {
+          user: req.session.authUser,
+          errorMessage: 'There was an error updating your profile. Please try again.'
+      });
+  }
 });
 
 router.get('/is-available', async function(req, res) {
@@ -162,5 +162,8 @@ router.get('/is-available', async function(req, res) {
 });
 
 
+router.get('/forgot-password', async function(req, res, next) {
+  
+})
 
 export default router;
