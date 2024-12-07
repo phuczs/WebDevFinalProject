@@ -1,0 +1,45 @@
+<div class="card shadow-lg">
+  <!-- Header -->
+  <h5 class="card-header text-center font-weight-bold display-4 bg-primary text-white py-4">
+    {{this.article.Title}}
+  </h5>
+
+  <!-- Body -->
+  <div class="card-body">
+    <!-- Category Badge -->
+    <div class="mb-3 text-center">
+      <span class="badge badge-success px-3 py-2" style="font-size: 1rem;">
+        {{this.article.CatName}}
+      </span>
+    </div>
+
+    <!-- Publish Date and Author -->
+    <div class="text-muted text-center mb-4">
+      <p class="mb-1"><strong>Publish Date:</strong> {{this.article.PublishDate}}</p>
+      <p class="mb-0"><strong>Author:</strong> {{this.article.Author}}</p>
+    </div>
+
+    <!-- Article Image -->
+    <div class="text-center mb-4">
+      <img class="img-fluid rounded border" 
+           src="/static/imgs/news/{{this.article.NewsID}}/main_thumbs.jpg" 
+           alt="{{this.article.Title}}" 
+            style="max-height: 600px; max-width: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Abstract -->
+    <p class="card-text text-muted lead text-justify">
+      {{this.article.Abstract}}
+    </p>
+
+    <!-- Content -->
+    <div class="card-text text-justify" style="line-height: 1.8;">
+      {{{this.article.Content}}}
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="card-footer text-muted text-center py-3">
+    <small>Thank you for reading!</small>
+  </div>
+</div>

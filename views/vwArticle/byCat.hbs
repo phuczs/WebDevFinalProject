@@ -1,0 +1,84 @@
+<div class="card">
+  <h5 class="card-header text-center bg-primary text-white">
+    <strong> Articles</strong>
+  </h5>
+  {{#if this.empty}}
+  <div class="card-body">
+    Không có dữ liệu.
+  </div>
+  {{else}}
+  <div class="card-body">
+    <div class="d-flex flex-wrap justify-content-between">
+      {{#each this.articles}}
+      <div class="col-md-6 mb-4 d-flex">
+        <div class="card h-100 flex-fill">
+          <a href="/articles/detail?id={{NewsID}}">
+            <img src="/static/imgs/news/{{NewsID}}/main_thumbs.jpg" alt="{{Title}}" class="card-img-top" title="{{Title}}">
+          </a>
+          <div class="card-body">
+            <span class="badge badge-success mb-2">{{CatName}}</span>
+            <h5 class="card-title" style="color: black; font-weight: bold;">{{Title}}</h5>
+            <p class="card-text">{{Abstract}}</p>
+            <a href="/articles/detail?id={{NewsID}}" class="btn btn-outline-primary btn-sm">Read More</a>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+      <ul class="pagination">
+        <li class="page-item disabled">
+          <a class="page-link">Previous</a>
+        </li>
+        {{#each this.pageNumbers}}
+        {{#if active}}
+        <li class="page-item active">
+          <a class="page-link" href="#">{{value}}</a>
+        </li>
+        {{else}}
+        <li class="page-item">
+          <a class="page-link" href="?id={{../catId}}&page={{value}}">{{value}}</a>
+        </li>
+        {{/if}}
+        {{/each}}
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  {{/if}}
+  <div class="card-footer text-muted">
+    Footer
+  </div>
+</div>
+
+<style>
+.card-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  flex: 1 1 calc(50% - 1rem); /* Adjust for two cards per row with spacing */
+  margin: 0.5rem; /* Adjust margin as needed */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.card-header {
+  font-size: 1.5rem; /* Adjust font size */
+  padding: 1rem; /* Adjust padding */
+  border-bottom: 2px solid #007bff; /* Optional: Add a bottom border */
+}
+
+.card-title {
+  font-size: 1.25rem; /* Adjust font size */
+  margin-bottom: 0.5rem; /* Space below the title */
+}
+</style>

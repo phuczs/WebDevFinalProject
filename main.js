@@ -7,8 +7,11 @@ import { fileURLToPath } from 'url';
 
 import categoryRouter from './routes/category.route.js';
 import accountRouter from './routes/account.route.js';
+import articleRouter from './routes/article.route.js';
+import articleUserRouter from './routes/article-user.route.js';
 
 import categoryService from './services/category.service.js';
+
 
 const app = express();
 app.set('trust proxy', 1) // trust first proxy
@@ -64,10 +67,13 @@ app.get('/test', function (req, res) {
   res.sendFile(__dirname + '/test.html');
 });
 
-// import articleRouter from './routes/article.route.js';
-// app.use('/admin/articles',articleRouter);
+
+
 app.use('/account', accountRouter);
+app.use('/articles',articleUserRouter);
+
 app.use('/admin/categories',categoryRouter);
+app.use('/admin/articles',articleRouter);
 
 app.listen(3000, function () {
     console.log('Server started on http://localhost:3000');
