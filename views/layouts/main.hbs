@@ -219,11 +219,7 @@
     <!-- Navbar Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mr-auto">
-        <!-- Home Link -->
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-
+       
         <!-- Dropdown for World -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="worldDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -231,70 +227,49 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="worldDropdown">
             <a class="dropdown-item" href="#">Asia</a>
-            <a class="dropdown-item" href="#">Europe</a>
             <a class="dropdown-item" href="#">Middle East</a>
           </div>
         </li>
 
         <!-- Dropdown for Politics -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="politicsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+          <a class="nav-link" href="#" id="politicsDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
             Politics
-          </a>
-          <div class="dropdown-menu" aria-labelledby="politicsDropdown">
-            <a class="dropdown-item" href="#">Elections</a>
-            <a class="dropdown-item" href="#">Policies</a>
-            <a class="dropdown-item" href="#">International Relations</a>
-          </div>
-        </li>
+       
 
         <!-- Dropdown for Business -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="businessDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+          <a class="nav-link" href="#" id="businessDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
             Business
           </a>
-          <div class="dropdown-menu" aria-labelledby="businessDropdown">
-            <a class="dropdown-item" href="#">Markets</a>
-            <a class="dropdown-item" href="#">Economy</a>
-            <a class="dropdown-item" href="#">Startups</a>
-          </div>
-        </li>
+        
 
         <!-- Dropdown for Technology -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="techDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+          <a class="nav-link" href="#" id="techDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
             Technology
           </a>
-          <div class="dropdown-menu" aria-labelledby="techDropdown">
-            <a class="dropdown-item" href="#">Gadgets</a>
-            <a class="dropdown-item" href="#">AI</a>
-            <a class="dropdown-item" href="#">Software</a>
-          </div>
-        </li>
+       
 
         <!-- Dropdown for Sports -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="sportsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       
+          <a class="nav-link" href="#" id="sportsDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
             Sports
           </a>
-          <div class="dropdown-menu" aria-labelledby="sportsDropdown">
-            <a class="dropdown-item" href="#">Football</a>
-            <a class="dropdown-item" href="#">Basketball</a>
-            <a class="dropdown-item" href="#">Tennis</a>
-          </div>
-        </li>
+        
 
         <!-- Dropdown for Entertainment -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="entertainmentDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+          <a class="nav-link" href="#" id="entertainmentDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
             Entertainment
           </a>
-          <div class="dropdown-menu" aria-labelledby="entertainmentDropdown">
-            <a class="dropdown-item" href="#">Movies</a>
-            <a class="dropdown-item" href="#">Music</a>
-            <a class="dropdown-item" href="#">Celebrity News</a>
-          </div>
-        </li>
+           <a class="nav-link" href="#" id="healthDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
+            Health
+          </a>
+          <a class="nav-link" href="#" id="gamesDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
+            Games
+          </a>
+        
       </ul>
 
       <!-- Search Form -->
@@ -370,43 +345,17 @@
     <!-- Sidebar -->
     <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
       <div class="sidebar-sticky pt-3">
-        <!-- Breaking News Section -->
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Breaking News</span>
-        </h6>
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Latest Headlines
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Most Read
-            </a>
-          </li>
-        </ul>
-
         <!-- Categories Section -->
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Categories</span>
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              Top Stories
-            </a>
+            {{#each lcCategories}}
+              <a href="/articles/byCat?id={{CatID}}" class="nav-link">{{CatName}}</a>
+            {{/each}}
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Editor's Picks
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Week in Review
-            </a>
-          </li>
+          
         </ul>
       </div>
     </div>
