@@ -162,8 +162,101 @@ router.get('/is-available', async function(req, res) {
 });
 
 
-router.get('/forgot-password', async function(req, res, next) {
-  
+router.get('/forgot-password', function(req, res) {
+  res.render('vwAccount/forgot-password');
 })
+
+router.post('/forgot-password', async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+      return res.status(400).json({ message: 'Email is required.' });
+  }
+
+  try {
+      const user = await findUserByEmail(email); // Your function to find user by email
+      if (!user) {
+          return res.status(404).json({ message: 'Email not found.' });
+      }
+
+      const otp = generateOtp(); // Your function to generate an OTP
+      await sendOtpEmail(email, otp); // Your function to send email with the OTP
+
+      // Store OTP for verification (consider hashing it for security)
+      storeOtpForUser(user.id, otp); // Store the OTP temporarily, might be in-memory or database
+
+      return res.status(200).json({ data: 'Your OTP has been sent to your email.' });
+  } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: 'An error occurred while sending OTP.' });
+  }
+});
+
+router.post('/verify-otp', async (req, res) => {
+  const { email, otp } = req.body;
+
+  if (!email || !otp) {
+      return res.status(400).json({ message: 'Email and OTP are required.' });
+  }
+
+  try {
+      const user = await findUserByEmail(email); // Check if the user exists
+
+      if (!user) {
+          return res.status(404).json({ message: 'User not found.' });
+      }
+
+      const isValidOtp = await verifyOtpForUser(user.id, otp); // Your function to verify the stored OTP
+      if (!isValidOtp) {
+          return res.status(400).json({ message: 'Invalid OTP. Please try again.' });
+      }
+
+      // Optionally, clear/delete the stored OTP from wherever it is saved after successful verification.
+      clearStoredOtpForUser(user.id);
+
+      return res.status(200).json({ message: 'OTP verified successfully.' });
+  } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: 'An error occurred while verifying OTP.' });
+  }
+});
+
+router.get('/reset-password', function(req, res) {
+  res.render('/vwAccount/reset-password');
+});
+
+router.post('/reset-password', async function (req, res, next) {
+  const { email, otp, newPassword } = req.body;
+
+  connection.execute("SELECT * FROM users WHERE email = ?", [email], async (err, results) => {
+      if (err) {
+          return res.status(500).json({ message: 'Database error.' });
+      }
+
+      const user = results[0];
+      if (!user) {
+          return res.status(400).json({ message: "User does not exist." });
+      }
+
+      // Check the OTP and its expiration
+      if (user.otp !== otp) {
+          return res.status(400).json({ message: "Invalid OTP." });
+      }
+
+      if (new Date() > new Date(user.otpExpire)) {
+          return res.status(400).json({ message: "OTP has expired." });
+      }
+
+      // Hash the new password and update it in the database
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      connection.execute("UPDATE users SET password = ?, otp = NULL, otpExpire = NULL WHERE email = ?", [hashedPassword, email], (err) => {
+          if (err) {
+              return res.status(500).json({ message: 'Error updating password.' });
+          }
+          return res.status(200).json({ message: "Password reset successfully." });
+      });
+  });
+});
+
 
 export default router;

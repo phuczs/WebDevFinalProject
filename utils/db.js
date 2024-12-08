@@ -7,7 +7,7 @@ export default knex({
     port: 3306,
     user: 'root',
     password: '',
-    database: 'bao-dien-tu'
+    database: 'bao_dien_tu'
   },
   pool: { min: 0, max: 7 }
 });
