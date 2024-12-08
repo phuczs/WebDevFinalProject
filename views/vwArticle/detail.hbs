@@ -1,6 +1,6 @@
-<div class="card shadow-lg">
+<div class="card shadow-lg mx-auto" style="max-width: 800px;">
   <!-- Header -->
-  <h5 class="card-header text-center font-weight-bold display-4 bg-primary text-white py-4">
+  <h5 class="card-header text-center fw-bold display-4 bg-primary text-white py-4">
     {{this.article.Title}}
   </h5>
 
@@ -8,7 +8,7 @@
   <div class="card-body">
     <!-- Category Badge -->
     <div class="mb-3 text-center">
-      <span class="badge badge-success px-3 py-2" style="font-size: 1rem;">
+      <span class="badge bg-success px-3 py-2 fs-6">
         {{this.article.CatName}}
       </span>
     </div>
@@ -19,27 +19,63 @@
       <p class="mb-0"><strong>Author:</strong> {{this.article.Author}}</p>
     </div>
 
+<!-- Abstract -->
+    <p class="card-text text-muted lead text-justify fst-italic">
+      {{this.article.Abstract}}
+    </p>
     <!-- Article Image -->
     <div class="text-center mb-4">
       <img class="img-fluid rounded border" 
            src="/static/imgs/news/{{this.article.NewsID}}/main_thumbs.jpg" 
            alt="{{this.article.Title}}" 
-            style="max-height: 600px; max-width: 100%; object-fit: cover;">
+           style="max-height: 600px; width: 100%; object-fit: cover;">
     </div>
 
-    <!-- Abstract -->
-    <p class="card-text text-muted lead text-justify">
-      {{this.article.Abstract}}
-    </p>
+    
 
     <!-- Content -->
     <div class="card-text text-justify" style="line-height: 1.8;">
       {{{this.article.Content}}}
     </div>
+     <!-- Comment Section -->
+     <!-- Comment Section -->
+    <div class="mt-5">
+      <h4 class="mb-4"><strong>Comments</strong></h4>
+
+      <!-- Existing Comments -->
+      <div class="mb-4">
+        {{#each this.comments}}
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">{{this.author}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{this.date}}</h6>
+              <p class="card-text">{{this.content}}</p>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+
+      <!-- Comment Form -->
+      <form>
+        <div class="mb-3">
+          <label for="commentAuthor" class="form-label"><strong>Name</strong></label>
+          <input type="text" class="form-control" id="commentAuthor" required>
+        </div>
+        <div class="mb-3">
+          <label for="commentContent" class="form-label"><strong>What's on your mind?</strong><i class="bi bi-emoji-laughing"></i></label>
+          <textarea class="form-control" id="commentContent" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Comment</button>
+      </form>
+    </div>
+  </div>
+
+
   </div>
 
   <!-- Footer -->
-  <div class="card-footer text-muted text-center py-3">
-    <small>Thank you for reading!</small>
+  <div class="card-footer text-muted text-center py-3 justify-content-center">
+    <p class="card-text">Thank you for reading!</p>
   </div>
 </div>
+

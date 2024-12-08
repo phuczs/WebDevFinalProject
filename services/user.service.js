@@ -2,26 +2,13 @@ import db from '../utils/db.js';
 
 export default {
     // Find user by username
-    async findByUsername(username) {
-        const user = await db('users').where('username', username).first();
-        if (!user) {
-            throw new Error('User not found');
-        }
-        return user;
+    findByUsername(username) {
+        return db('users').where('username', username).first();
     },
 
     // Add new user
-    async add(entity) {
-        if (entity.password) {
-            entity.password = bcrypt.hashSync(entity.password, 8); // Ensure password is hashed
-        }
-        try {
-            const [id] = await db('users').insert(entity);
-            return await this.findByUsername(entity.username); // Return the full user object
-        } catch (error) {
-            console.error('Error adding user:', error);
-            throw new Error('Error adding user to the database');
-        }
+     add(entity) {
+        return db('users').insert(entity);
     },
 
     // Update user details
