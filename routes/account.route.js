@@ -55,13 +55,7 @@ router.post('/logout', function(req, res){
     res.redirect('/');
 });
 
-function isAuth(req,res,next){
-    if(!req.session.auth){
-      req.session.retUrl=req.originalUrl;  //luu lai trc khi kick user
-      return res.redirect('/account/login');
-    }
-    next();
-  }
+import {isAuth} from '../middlewares/auth_mdw.js';
 
 router.get('/profile', isAuth, function(req, res){
     res.render('vwAccount/profile', {
@@ -137,7 +131,7 @@ router.post('/verify-otp', async (req, res) => {
     // Update password and clear OTP
     await userService.updatePasswordWithEmail(email, newPassword);
 
-    res.render('vwAccount/login', { 
+    res.render('vwAccount/verify-otp', { 
       message: 'Password updated successfully. You can now log in with your new password.',
       messageType: 'success'
     });

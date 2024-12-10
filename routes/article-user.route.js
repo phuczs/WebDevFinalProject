@@ -1,5 +1,6 @@
 import express from 'express';
 import articleService from '../services/article.service.js';
+import commentService from '../services/comment.service.js';
 
 const router = express.Router();
 
@@ -35,5 +36,20 @@ router.get('/byCat', async function (req, res) {
       article:article
     });
   });
+
+  // router.get('/comment', async function (req, res) {
+  //   // const comment = await commentService.findAllComments();
+  //   res.render('vwArticle/comment');
+  //   //   list:list,
+  //   // });
+  // });
+
+  // // Handle new comment submission
+  // router.post('/comment', async function (req, res) {
+  //   // console.log(req.body);
+  //   const ret = await commentService.add(req.body);
+  //   // console.log(ret); // insertId
+  //   res.render('vwArticle/');
+  // });
   
   export default router;

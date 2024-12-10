@@ -72,8 +72,9 @@ app.get('/test', function (req, res) {
 app.use('/account', accountRouter);
 app.use('/articles',articleUserRouter);
 
-app.use('/admin/categories',categoryRouter);
-app.use('/admin/articles',articleRouter);
+import {isAuth,isAdmin} from './middlewares/auth_mdw.js';
+app.use('/admin/categories',isAuth,isAdmin,categoryRouter);
+app.use('/admin/articles',isAuth,isAdmin,articleRouter);
 
 app.listen(3000, function () {
     console.log('Server started on http://localhost:3000');
