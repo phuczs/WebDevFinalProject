@@ -1,6 +1,7 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
 import session from 'express-session';
+import bodyParser from 'body-parser';
 import numeral from 'numeral';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -9,6 +10,7 @@ import categoryRouter from './routes/category.route.js';
 import accountRouter from './routes/account.route.js';
 import articleRouter from './routes/article.route.js';
 import articleUserRouter from './routes/article-user.route.js';
+import searchRouter from './routes/search.route.js';
 
 import categoryService from './services/category.service.js';
 
@@ -38,6 +40,8 @@ app.engine('hbs', engine({
 })),
 app.set('view engine', 'hbs');
 app.set('views', './views');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use('/static', express.static('static'));
 
@@ -71,6 +75,7 @@ app.get('/test', function (req, res) {
 
 app.use('/account', accountRouter);
 app.use('/articles',articleUserRouter);
+app.use('/',searchRouter);
 
 import {isAuth,isAdmin} from './middlewares/auth_mdw.js';
 app.use('/admin/categories',isAuth,isAdmin,categoryRouter);

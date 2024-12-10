@@ -273,10 +273,12 @@
       </ul>
 
       <!-- Search Form -->
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      <form action="/search" method="POST" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="query" class="form-control" placeholder="Type keywords to search..." value="{{query}}" required>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
 
       <!-- Social Media Icons -->
       <ul class="navbar-nav ml-3">
