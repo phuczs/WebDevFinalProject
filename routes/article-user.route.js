@@ -37,7 +37,9 @@ router.get('/byCat', async function (req, res) {
     });
   });
 
-  
+  router.get('/comment', function(req, res) {
+    res.render('vwArticle/comment');
+} )
 
   // router.get('/comment', async function (req, res) {
   //   // const comment = await commentService.findAllComments();
