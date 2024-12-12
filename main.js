@@ -11,6 +11,7 @@ import accountRouter from './routes/account.route.js';
 import articleRouter from './routes/article.route.js';
 import articleUserRouter from './routes/article-user.route.js';
 import searchRouter from './routes/search.route.js';
+import miscRouter from './routes/misc.route.js';
 
 import categoryService from './services/category.service.js';
 
@@ -77,9 +78,11 @@ app.use('/account', accountRouter);
 app.use('/articles',articleUserRouter);
 app.use('/',searchRouter);
 
-import {isAuth,isAdmin} from './middlewares/auth_mdw.js';
+
+import {isAuth,isAdmin,isAuthor} from './middlewares/auth_mdw.js';
 app.use('/admin/categories',isAuth,isAdmin,categoryRouter);
 app.use('/admin/articles',isAuth,isAdmin,articleRouter);
+app.use('/misc',isAuth,isAuthor,isAdmin,miscRouter);
 
 app.listen(3000, function () {
     console.log('Server started on http://localhost:3000');
