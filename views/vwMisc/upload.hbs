@@ -1,0 +1,92 @@
+{{#section 'css'}}
+<style>
+    .upload-container {
+        max-width: 800px;
+        margin: 2rem auto;
+    }
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+</style>
+{{/section}}
+
+{{#section 'js'}}
+<script src="https://cdn.tiny.cloud/1/61tvwn11qz6mopeim4bm41v9qy2owbup04sy8bw5dnbeok3g/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: '#content',
+    plugins: 'image link media lists',
+    toolbar: [
+      'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image media'
+    ],
+    images_upload_url: '/misc/upload-image',
+    images_upload_handler: function (blobInfo, progress) {
+      return new Promise((resolve, reject) => {
+        const formData = new FormData();
+        formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+        fetch('/misc/upload-image', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(json => {
+          if (json.location) {
+            resolve(json.location);
+          } else {
+            reject('Upload failed');
+          }
+        })
+        .catch(error => {
+          reject(error);
+        });
+      });
+    }
+  });
+</script>
+{{/section}}
+
+<div class="upload-container">
+    <form action="/misc/upload" method="post">
+        <div class="card">
+            <h5 class="card-header bg-primary text-white">
+                <i class="bi bi-pencil-square me-2"></i>Publish Article
+            </h5>
+            <div class="card-body">
+                {{#if successMessage}}
+                    <div class="alert alert-success">{{successMessage}}</div>
+                {{/if}}
+
+                <div class="form-group mb-3">
+                    <label for="title" class="form-label">Article Title</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="abstract" class="form-label">Abstract</label>
+                    <textarea class="form-control" id="abstract" name="abstract" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="catName" class="form-label">Category</label>
+                    <select class="form-control" id="catName" name="catName" required>
+                        {{#each categories}}
+                            <option value="{{this.CatName}}">{{this.CatName}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="content" class="form-label">Article Content</label>
+                    <textarea id="content" name="content"></textarea>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-cloud-upload me-2"></i>Publish Article
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
