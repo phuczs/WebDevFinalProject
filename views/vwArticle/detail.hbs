@@ -48,22 +48,9 @@
 
   <!-- Existing Comments -->
   <div id="comments-section">
-    {{#if comments.length}}
-      {{#each comments}}
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">{{this.author}}</h5>
-            <p class="card-text">{{this.content}}</p>
-            <small class="text-muted">{{this.datecreate}}</small>
-          </div>
-        </div>
-      {{/each}}
-    {{else}}
-      <p>No comments yet. Be the first to comment!</p>
-      <a class="btn btn-sm btn-primary" href="/articles/comment" role="button">
+      <a class="btn btn-sm btn-primary" href="/articles/comment?id={{this.article.NewsID}}" role="button">
             Add your comment  <i class="bi bi-pencil-square"></i>
             </a>
-    {{/if}}
   </div>
 
     </div>
