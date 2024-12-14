@@ -14,7 +14,7 @@ import searchRouter from './routes/search.route.js';
 import miscRouter from './routes/misc.route.js';
 
 import categoryService from './services/category.service.js';
-import commentService from './services/comment.service.js';
+
 
 const app = express();
 app.set('trust proxy', 1) // trust first proxy
@@ -52,12 +52,6 @@ app.use(async function (req, res, next) {
   next();
 });
 
-app.use(async function (req, res, next) {
-  const comments = await commentService.findAllComments();
-  res.locals.lcComments = comments;
-  next();
-})
-
 app.use(function (req, res, next) {
   if (req.session.auth===undefined) {
     req.session.auth = false;
@@ -89,10 +83,6 @@ import {isAuth,isAdmin,isAuthor} from './middlewares/auth_mdw.js';
 app.use('/admin/categories',isAuth,isAdmin,categoryRouter);
 app.use('/admin/articles',isAuth,isAdmin,articleRouter);
 app.use('/misc',isAuth,isAuthor,isAdmin,miscRouter);
-
-
-
-
 
 app.listen(3000, function () {
     console.log('Server started on http://localhost:3000');
