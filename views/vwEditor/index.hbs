@@ -1,0 +1,39 @@
+<div class="card shadow-sm mb-4">
+  <h5 class="card-header bg-info text-white">
+    <i class="bi bi-journal-text me-2"></i> Drafts Overview
+  </h5>
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Publish Date</th>
+          <th scope="col">Status</th>
+          <th scope="col" class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.list}}
+        <tr>
+          <th scope="row">{{NewsID}}</th>
+          <td>{{Title}}</td>
+          <td>{{PublishDate}}</td>
+          <td>{{Status}}</td>
+          <td class="text-center">
+            <a class="btn btn-sm btn-outline-primary me-2" href="/editor/modify?id={{NewsID}}" role="button">
+              <i class="bi bi-pencil-square"></i> Edit
+            </a>
+            <a class="btn btn-sm btn-outline-success" href="/editor/approval?id={{NewsID}}" role="button">
+              <i class="bi bi-check-circle"></i> Review
+            </a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer text-muted text-end">
+    Last updated 2 days ago
+  </div>
+</div>

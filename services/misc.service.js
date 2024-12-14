@@ -9,13 +9,14 @@ const miscService = {
     // Add new article
     async addArticle(articleData) {
         try {
-            const [articleId] = await db('articles').insert({
+            const [articleId] = await db('draft').insert({
                 Title: articleData.title,
                 Abstract: articleData.abstract,
                 Content: articleData.content,
                 CatName: articleData.catName,
                 PublishDate: db.fn.now(), 
-                Author: articleData.author
+                Author: articleData.author,
+                status:'pending'
             });
             return articleId;
         } catch (error) {

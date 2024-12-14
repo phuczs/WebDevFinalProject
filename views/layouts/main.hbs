@@ -226,37 +226,35 @@
             Categories
           </a>
           <div class="dropdown-menu" aria-labelledby="worldDropdown">
-            <a class="dropdown-item" href="/articles/byCat?id=7">Asia</a>
-            <a class="dropdown-item" href="/articles/byCat?id=9">Middle East</a>
-             <a class="dropdown-item" href="/articles/byCat?id=2">
-            Politics
-          </a>       
-          <a class="dropdown-item" href="/articles/byCat?id=10">
-            Business
-          </a>        
-        <!-- Dropdown for Technology -->       
-          <a class="dropdown-item" href="/articles/byCat?id=1">
-            Technology
-          </a>
-        <!-- Dropdown for Sports -->
-       
-          <a class="dropdown-item" href="/articles/byCat?id=3">
-            Sports
-          </a>
-        <!-- Dropdown for Entertainment -->
-        
-          <a class="dropdown-item" href="/articles/byCat?id=8">
-            Entertainment
-          </a>
-            <a class="dropdown-item" href="/articles/byCat?id=11">
-            Health
-          </a>
-          <a class="dropdown-item" href="/articles/byCat?id=32">
-            Games
-          </a>
+            <a class="dropdown-item" href="/articles/byCat?id=7"><i class="bi bi-globe"></i> Asia</a>
+            <a class="dropdown-item" href="/articles/byCat?id=9"><i class="bi bi-globe"></i> Middle East</a>
+            <a class="dropdown-item" href="/articles/byCat?id=2"><i class="bi bi-bank"></i> Politics</a>       
+            <a class="dropdown-item" href="/articles/byCat?id=10"><i class="bi bi-briefcase"></i> Business</a>        
+            <a class="dropdown-item" href="/articles/byCat?id=1"><i class="bi bi-cpu"></i> Technology</a>
+            <a class="dropdown-item" href="/articles/byCat?id=3"><i class="bi bi-trophy"></i> Sports</a>
+            <a class="dropdown-item" href="/articles/byCat?id=8"><i class="bi bi-film"></i> Entertainment</a>
+            <a class="dropdown-item" href="/articles/byCat?id=11"><i class="bi bi-heart"></i> Health</a>
+            <a class="dropdown-item" href="/articles/byCat?id=32"><i class="bi bi-controller"></i> Games</a>
           </div>
         </li>
-        <li class="nav-item"> <a class="nav-link" href="/misc/upload">Upload your own news</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="writerDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Writer Workplace
+          </a>
+          <div class="dropdown-menu" aria-labelledby="writerDropdown">
+            <a class="dropdown-item" href="/misc/upload"><i class="bi bi-upload"></i> Upload your own news</a>
+            <a class="dropdown-item" href="/misc/pend"><i class="bi bi-file-earmark-text"></i> Your Drafts</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="editorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Editor Workplace
+          </a>
+          <div class="dropdown-menu" aria-labelledby="editorDropdown">
+            <a class="dropdown-item" href="/editor/index"><i class="bi bi-journal"></i> Drafts Overview</a>
+          </div>
+        </li>    
       </ul>
       <!-- Search Form -->
       <form action="/search" method="POST" class="mb-4">
