@@ -3,6 +3,7 @@ import articleService from '../services/article.service.js';
 import commentService from '../services/comment.service.js';
 import { isAuth } from '../middlewares/auth_mdw.js';
 import { format } from 'date-fns';
+import pdfkit from 'pdfkit';
 
 const router = express.Router();
 
@@ -31,17 +32,15 @@ router.get('/byCat', async function (req, res) {
     });
   });
 
-  router.get('/detail', async function (req, res) {
+router.get('/detail', async function (req, res) {
     const id = req.query.id || 0;
     const article = await articleService.findById(id);
     res.render('vwArticle/detail', {
-      article:article
+      article: article
     });
   });
 
-  
-
-  router.get('/comment', isAuth, async function (req, res) {
+router.get('/comment', isAuth, async function (req, res) {
     try {
         const articleId = req.query.id;
         const comments = await commentService.findCommentsByNewsId(articleId);
@@ -57,8 +56,8 @@ router.get('/byCat', async function (req, res) {
     }
   });
 
-  // Handle new comment submission
-  router.post('/comment', isAuth, async function (req, res) {
+// Handle new comment submission
+router.post('/comment', isAuth, async function (req, res) {
     try {
         const commentData = {
             newsID: req.query.id,
@@ -83,5 +82,34 @@ router.get('/byCat', async function (req, res) {
         res.status(500).send('Error publishing comment');
     }
   });
-  
-  export default router;
+
+// Handle article download as PDF
+router.get('/download', async function (req, res) {
+    try {
+        const id = req.query.id || 0;
+        const article = await articleService.findById(id);
+
+        if (!article) {
+            return res.status(404).send('Article not found');
+        }
+
+        const doc = new pdfkit();
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `attachment; filename="article_${id}.pdf"`);
+
+        doc.pipe(res);
+        doc.fontSize(25).text(article.Title, { align: 'center' });
+        doc.moveDown();
+        doc.fontSize(12).text(article.Content, {
+            align: 'justify',
+            indent: 30,
+            height: 300,
+            ellipsis: true
+        });
+        doc.end();
+    } catch (error) {
+        res.status(500).send('Error generating PDF');
+    }
+});
+
+export default router;

@@ -4,6 +4,15 @@
   </h5>
   <div class="card-body">
     <table class="table table-bordered">
+      <div class="d-flex flex-wrap mb-3">
+        {{#each lcCategories}}
+          <div class="mb-1 me-1">
+            <a href="/editor/index?catId={{CatID}}" class="btn btn-outline-primary">
+              <i class="bi bi-folder me-1"></i> {{CatName}}
+            </a>
+          </div>
+        {{/each}}
+      </div>
       <thead class="table-light">
         <tr>
           <th scope="col">#</th>

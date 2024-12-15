@@ -19,28 +19,29 @@ import latestRouter from './routes/latest.route.js';
 
 
 const app = express();
-app.set('trust proxy', 1) // trust first proxy
+app.set('trust proxy', 1); // trust first proxy
 app.use(session({
   secret: 'SECRET_KEY',
   resave: false,
   saveUninitialized: true,
-  cookie: {  }
+  cookie: {}
 }));
 
 app.use(express.urlencoded({
-    extended: true
+  extended: true
 }));
 
 import hbs_section from 'express-handlebars-sections';
 app.engine('hbs', engine({
   extname: 'hbs',
   helpers: {
-      format_number(value) {
-        return numeral(value).format('0,0') + ' vnd';
-      },
-      section: hbs_section(),
-    }
-})),
+    format_number(value) {
+      return numeral(value).format('0,0') + ' vnd';
+    },
+    section: hbs_section(),
+    
+  }
+}));
 app.set('view engine', 'hbs');
 app.set('views', './views');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -55,7 +56,7 @@ app.use(async function (req, res, next) {
 });
 
 app.use(function (req, res, next) {
-  if (req.session.auth===undefined) {
+  if (req.session.auth === undefined) {
     req.session.auth = false;
   }
   res.locals.auth = req.session.auth;
@@ -64,10 +65,9 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function (req, res) {
-
   console.log(req.session.auth);
-    res.render('home');
-    });
+  res.render('home');
+});
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 app.get('/test', function (req, res) {
@@ -79,12 +79,12 @@ app.use('/articles',articleUserRouter);
 app.use('/',searchRouter);
 app.use('/latest', latestRouter);
 
-import {isAuth,isAdmin,isAuthor, isEditor} from './middlewares/auth_mdw.js';
-app.use('/admin/categories',isAuth,isAdmin,categoryRouter);
-app.use('/admin/articles',isAuth,isAdmin,articleRouter);
-app.use('/misc',isAuth,isAuthor,isAdmin,miscRouter);
-app.use('/editor',isAuth,isEditor,isAdmin,editorRouter);
+import { isAuth, isAdmin, isAuthor, isEditor } from './middlewares/auth_mdw.js';
+app.use('/admin/categories', isAuth, isAdmin, categoryRouter);
+app.use('/admin/articles', isAuth, isAdmin, articleRouter);
+app.use('/misc', isAuth, isAuthor, isAdmin, miscRouter);
+app.use('/editor', isAuth, isEditor, isAdmin, editorRouter);
 
 app.listen(3000, function () {
-    console.log('Server started on http://localhost:3000');
-  });
+  console.log('Server started on http://localhost:3000');
+});
