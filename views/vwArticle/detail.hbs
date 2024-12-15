@@ -1,16 +1,26 @@
+{{#section 'js'}}
+
+{{/section}}
+
 <div class="card shadow-lg mx-auto" style="max-width: 800px;">
   <!-- Header -->
-  <h5 class="card-header text-center fw-bold display-4 bg-primary text-white py-4">
+  <h5 class="card-header text-center fw-bold display-4 bg-danger text-white py-4 font-weight-bold">
     {{this.article.Title}}
   </h5>
 
   <!-- Body -->
   <div class="card-body">
     <!-- Category Badge -->
-    <div class="mb-3 text-center">
-      <span class="badge bg-success px-3 py-2 fs-6">
-        {{this.article.CatName}}
-      </span>
+    <div class="mb-3 text-center">  
+      <a href="/articles/byCat?id={{this.article.CatID}}" class="nav-link">
+        <span class="badge badge-info px-3 py-2 fs-6">
+        {{this.article.CatName}}</span>
+        </a>
+        {{#if this.article.is_premium}}
+        <span class="badge badge-warning mb-2"><i class="bi bi-gem"></i>Premium</span>
+        {{else}}
+        <span class="badge badge-secondary mb-2"><i class="bi bi-person"></i></i>Free</span>
+        {{/if}}
     </div>
 
     <!-- Publish Date and Author -->
@@ -38,39 +48,18 @@
       {{{this.article.Content}}}
     </div>
      <!-- Comment Section -->
-     <!-- Comment Section -->
-    <div class="mt-5">
-      <h4 class="mb-4"><strong>Comments</strong></h4>
+     <div class="container mt-5">
+  <h5>Comments for Article</h5>
 
-      <!-- Existing Comments -->
-      <div class="mb-4">
-        {{#each this.comments}}
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5 class="card-title">{{this.author}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{this.date}}</h6>
-              <p class="card-text">{{this.content}}</p>
-            </div>
-          </div>
-        {{/each}}
-      </div>
-
-      <!-- Comment Form -->
-      <form>
-        <div class="mb-3">
-          <label for="commentAuthor" class="form-label"><strong>Name</strong></label>
-          <input type="text" class="form-control" id="commentAuthor" required>
-        </div>
-        <div class="mb-3">
-          <label for="commentContent" class="form-label"><strong>What's on your mind?</strong><i class="bi bi-emoji-laughing"></i></label>
-          <textarea class="form-control" id="commentContent" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit Comment</button>
-      </form>
-    </div>
+  <!-- Existing Comments -->
+  <div id="comments-section">
+      <a class="btn btn-sm btn-primary" href="/articles/comment?id={{this.article.NewsID}}" role="button">
+            Add your comment  <i class="bi bi-pencil-square"></i>
+            </a>
   </div>
 
-
+    </div>
+  </div>
   </div>
 
   <!-- Footer -->

@@ -1,6 +1,7 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
 import session from 'express-session';
+import bodyParser from 'body-parser';
 import numeral from 'numeral';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -9,9 +10,10 @@ import categoryRouter from './routes/category.route.js';
 import accountRouter from './routes/account.route.js';
 import articleRouter from './routes/article.route.js';
 import articleUserRouter from './routes/article-user.route.js';
-
+import searchRouter from './routes/search.route.js';
+import miscRouter from './routes/misc.route.js';
+import editorRouter from './routes/editor.route.js';
 import categoryService from './services/category.service.js';
-
 
 const app = express();
 app.set('trust proxy', 1) // trust first proxy
@@ -38,6 +40,8 @@ app.engine('hbs', engine({
 })),
 app.set('view engine', 'hbs');
 app.set('views', './views');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use('/static', express.static('static'));
 
@@ -67,15 +71,17 @@ app.get('/test', function (req, res) {
   res.sendFile(__dirname + '/test.html');
 });
 
-
-
 app.use('/account', accountRouter);
 app.use('/articles',articleUserRouter);
+app.use('/',searchRouter);
 
-app.use('/admin/categories',categoryRouter);
-app.use('/admin/articles',articleRouter);
+
+import {isAuth,isAdmin,isAuthor, isEditor} from './middlewares/auth_mdw.js';
+app.use('/admin/categories',isAuth,isAdmin,categoryRouter);
+app.use('/admin/articles',isAuth,isAdmin,articleRouter);
+app.use('/misc',isAuth,isAuthor,isAdmin,miscRouter);
+app.use('/editor',isAuth,isEditor,isAdmin,editorRouter);
 
 app.listen(3000, function () {
     console.log('Server started on http://localhost:3000');
   });
-  

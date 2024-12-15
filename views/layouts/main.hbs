@@ -223,60 +223,46 @@
         <!-- Dropdown for World -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="worldDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            World
+            Categories
           </a>
           <div class="dropdown-menu" aria-labelledby="worldDropdown">
-            <a class="dropdown-item" href="/articles/byCat?id=7">Asia</a>
-            <a class="dropdown-item" href="/articles/byCat?id=9">Middle East</a>
+            <a class="dropdown-item" href="/articles/byCat?id=7"><i class="bi bi-globe"></i> Asia</a>
+            <a class="dropdown-item" href="/articles/byCat?id=9"><i class="bi bi-globe"></i> Middle East</a>
+            <a class="dropdown-item" href="/articles/byCat?id=2"><i class="bi bi-bank"></i> Politics</a>       
+            <a class="dropdown-item" href="/articles/byCat?id=10"><i class="bi bi-briefcase"></i> Business</a>        
+            <a class="dropdown-item" href="/articles/byCat?id=1"><i class="bi bi-cpu"></i> Technology</a>
+            <a class="dropdown-item" href="/articles/byCat?id=3"><i class="bi bi-trophy"></i> Sports</a>
+            <a class="dropdown-item" href="/articles/byCat?id=8"><i class="bi bi-film"></i> Entertainment</a>
+            <a class="dropdown-item" href="/articles/byCat?id=11"><i class="bi bi-heart"></i> Health</a>
+            <a class="dropdown-item" href="/articles/byCat?id=32"><i class="bi bi-controller"></i> Games</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="writerDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Writer Workplace
+          </a>
+          <div class="dropdown-menu" aria-labelledby="writerDropdown">
+            <a class="dropdown-item" href="/misc/upload"><i class="bi bi-upload"></i> Upload your own news</a>
+            <a class="dropdown-item" href="/misc/pend"><i class="bi bi-file-earmark-text"></i> Your Drafts</a>
           </div>
         </li>
 
-        <!-- Dropdown for Politics -->
-        
-          <a class="nav-link" href="/articles/byCat?id=2" id="politicsDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
-            Politics
-       
-
-        <!-- Dropdown for Business -->
-        
-          <a class="nav-link" href="/articles/byCat?id=10" id="businessDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
-            Business
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="editorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Editor Workplace
           </a>
-        
-
-        <!-- Dropdown for Technology -->
-        
-          <a class="nav-link" href="/articles/byCat?id=1" id="techDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
-            Technology
-          </a>
-       
-
-        <!-- Dropdown for Sports -->
-       
-          <a class="nav-link" href="/articles/byCat?id=3" id="sportsDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
-            Sports
-          </a>
-        
-
-        <!-- Dropdown for Entertainment -->
-        
-          <a class="nav-link" href="/articles/byCat?id=8" id="entertainmentDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
-            Entertainment
-          </a>
-           <a class="nav-link" href="/articles/byCat?id=11" id="healthDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
-            Health
-          </a>
-          <a class="nav-link" href="/articles/byCat?id=32" id="gamesDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
-            Games
-          </a>
-        
+          <div class="dropdown-menu" aria-labelledby="editorDropdown">
+            <a class="dropdown-item" href="/editor/index"><i class="bi bi-journal"></i> Drafts Overview</a>
+          </div>
+        </li>    
       </ul>
-
       <!-- Search Form -->
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      <form action="/search" method="POST" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="query" class="form-control" placeholder="Type keywords to search..." value="{{query}}" required>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
 
       <!-- Social Media Icons -->
       <ul class="navbar-nav ml-3">
@@ -355,7 +341,6 @@
               <a href="/articles/byCat?id={{CatID}}" class="nav-link">{{CatName}}</a>
             {{/each}}
           </li>
-          
         </ul>
       </div>
     </div>

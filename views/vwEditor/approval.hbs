@@ -1,0 +1,141 @@
+{{#section 'css'}}
+<style>
+    .upload-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+    }
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        overflow: hidden;
+    }
+    .card-header {
+        background: linear-gradient(45deg, #007bff, #0056b3);
+        color: #fff;
+        text-align: center;
+        font-size: 1.25rem;
+        padding: 1rem;
+    }
+    .form-label {
+        font-weight: bold;
+        color: #333;
+    }
+    .form-control, .form-check-input {
+        border-radius: 5px;
+    }
+    .btn {
+        border-radius: 20px;
+        padding: 0.5rem 1.5rem;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+    .alert-success {
+        border-radius: 5px;
+        margin-bottom: 1rem;
+    }
+</style>
+{{/section}}
+
+{{#section 'js'}}
+<script src="https://cdn.tiny.cloud/1/61tvwn11qz6mopeim4bm41v9qy2owbup04sy8bw5dnbeok3g/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: '#content',
+    plugins: 'image link media lists',
+    toolbar: [
+      'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image media'
+    ],
+    images_upload_url: '/misc/upload-image',
+    images_upload_handler: function (blobInfo, progress) {
+      return new Promise((resolve, reject) => {
+        const formData = new FormData();
+        formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+        fetch('/misc/upload-image', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(json => {
+          if (json.location) {
+            resolve(json.location);
+          } else {
+            reject('Upload failed');
+          }
+        })
+        .catch(error => {
+          reject(error);
+        });
+      });
+    }
+  });
+</script>
+{{/section}}
+
+<div class="upload-container">
+    <form action="/editor/accept" method="post">
+        <input type="hidden" name="id" value="{{draft.NewsID}}">
+        <div class="card">
+            <h5 class="card-header">
+                <i class="bi bi-pencil-square me-2"></i>Modify Article
+            </h5>
+            <div class="card-body">
+                {{#if successMessage}}
+                    <div class="alert alert-success">{{successMessage}}</div>
+                {{/if}}
+
+                <div class="form-group mb-3">
+                    <label for="title" class="form-label">Article Title</label>
+                    <input type="text" class="form-control" id="title" name="title" required value="{{draft.Title}}">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="abstract" class="form-label">Abstract</label>
+                    <textarea class="form-control" id="abstract" name="abstract" rows="3" required>{{draft.Abstract}}</textarea>
+                </div>
+                <label for="catId" class="form-label">Category ID</label>
+                    <select class="form-control" id="catId" name="catId" required>
+                        {{#each categoryIds}}
+                            <option value="{{this.CatID}}">{{this.CatID}}</option>
+                        {{/each}}
+                    </select>
+
+                <div class="form-group mb-3">
+                    <label for="catName" class="form-label">Category</label>
+                        <select class="form-control" id="catName" name="catName" required>
+                        {{#each categories}}
+                            <option value="{{this.CatName}}">{{this.CatName}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="content" class="form-label">Article Content</label>
+                    <textarea id="content" name="content">{{draft.Content}}</textarea>
+                </div>
+
+                <div class="form-group mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="isPremium" name="is_premium" {{#if draft.is_premium}}checked{{/if}}>
+                    <label class="form-check-label" for="isPremium">Premium Article</label>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <button type="submit" class="btn btn-primary" formaction="/editor/accept">
+                    <i class="bi bi-check-circle me-2"></i>Accept
+                </button>
+                <button type="submit" class="btn btn-danger" formaction="/editor/reject">
+                    <i class="bi bi-x-circle me-2"></i>Reject
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

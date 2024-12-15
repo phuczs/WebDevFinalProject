@@ -1,4 +1,5 @@
 import express from 'express'
+import nodemailer from 'nodemailer';
 
 const router = express.Router();
 
@@ -54,19 +55,94 @@ router.post('/logout', function(req, res){
     res.redirect('/');
 });
 
-function isAuth(req,res,next){
-    if(!req.session.auth){
-      req.session.retUrl=req.originalUrl;  //luu lai trc khi kick user
-      return res.redirect('/account/login');
-    }
-    next();
-  }
+import {isAuth} from '../middlewares/auth_mdw.js';
 
 router.get('/profile', isAuth, function(req, res){
     res.render('vwAccount/profile', {
         user: req.session.authUser,
     });
 
+});
+
+// Nodemailer transporter setup
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure:false,
+  auth: {
+    user: 'phuchasprovt@gmail.com',
+    pass: 'xaho derz qmqa qieg'
+  }
+});
+
+router.get('/forgot-password', (req, res) => {
+  res.render('vwAccount/forgot-password');
+});
+
+router.post('/forgot-password', async (req, res) => {
+  const { email } = req.body;
+  
+  try {
+    // Check if user exists
+    const user = await userService.findUserByEmail(email);
+    
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    // Generate OTP
+    const otp = Math.floor(100000 + Math.random() * 900000);
+    
+    // Save OTP to database
+    await userService.saveOTP(email, otp);
+
+    // Send OTP via email
+    await transporter.sendMail({
+      from: 'phuchasprovt@gmail.com',
+      to: email,
+      subject: 'Password Reset OTP',
+      text: `Dear User!Your OTP for password reset is: ${otp}.This code will expired in 15 minutes after this email was sent!`
+    });
+    res.render('vwAccount/verify-otp', { 
+      email,
+      message: 'OTP sent to your email',
+      messageType: 'success'
+    });
+
+    res.render('vwAccount/verify-otp', { email });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+// Verify OTP route
+router.post('/verify-otp', async (req, res) => {
+  const { email, otp, newPassword } = req.body;
+
+  try {
+    // Verify OTP
+    const user = await userService.verifyOTP(email, otp);
+
+    if (!user) {
+      return res.status(400).send('Invalid or expired OTP');
+    }
+
+    // Update password and clear OTP
+    await userService.updatePasswordWithEmail(email, newPassword);
+
+    res.render('vwAccount/verify-otp', { 
+      message: 'Password updated successfully. You can now log in with your new password.',
+      messageType: 'success'
+    });
+  } catch (error) {
+    console.error(error);
+    res.render('vwAccount/verify-otp', { 
+      email,
+      message: 'Server error, please try again',
+      messageType: 'danger'
+    });
+  }
 });
 
 router.get('/change-password', isAuth, async function (req, res) {

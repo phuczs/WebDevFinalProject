@@ -1,0 +1,19 @@
+{{#if successMessage}}
+<div class="alert alert-success">{{successMessage}}</div>
+{{/if}}
+<form action="/articles/comment?id={{articles.NewsID}}" method="POST" class="mt-4">
+    <input type="hidden" name="newsID" value="{{articles.NewsID}}">
+    <div class="mb-3">
+        <label for="content" class="form-label">What's on your mind?</label>
+        <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Comment</button>
+</form>
+{{#each comments}}
+    <div class="comment">
+        <p><strong>{{author}}</strong>: {{content}}</p>
+        <p><em>{{date_create}}</em></p>
+    </div>
+{{else}}
+    <p>No comments yet.</p>
+{{/each}}
