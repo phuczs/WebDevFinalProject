@@ -19,7 +19,7 @@ router.post('/register', async function(req, res){
         name: req.body.name,
         email: req.body.email,
         dob: ymd_dob,
-        permission: 0,
+        permission: 1,
     }
     const ret = await userService.add(entity);
     res.render('vwAccount/register');

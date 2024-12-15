@@ -28,7 +28,8 @@ router.post('/upload', isAuth, async (req, res) => {
             catName: req.body.catName,
             author: req.session.authUser.name,
             status: 'pending',
-            is_premium: req.body.is_premium
+            is_premium: 0,
+            catID: req.body.catID
         };
 
         const articleId = await miscService.addArticle(articleData);

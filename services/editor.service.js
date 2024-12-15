@@ -7,6 +7,9 @@ async function getAllDrafts() {
 async function getDraftById(id) {
     return await db('draft').where('NewsID', id).first();
 }
+async function findByCatId(catId) {
+    return db('draft').where('CatID', catId);
+  }
 
 async function updateDraft(id, draft) {
     return await db('draft').where('NewsID', id).update(draft);
@@ -24,7 +27,10 @@ async function moveDraftToArticles(id) {
     const draft = await db('draft').where('NewsID', id).first();
     if (draft) {
         const updatedDraft = {
-            ...draft,
+            NewsID: draft.NewsID,
+            Title: draft.Title,
+            Abstract: draft.Abstract,
+            PublishDate: draft.PublishDate,
             CatID: draft.CatID,
             is_premium: draft.is_premium
         };
@@ -51,5 +57,6 @@ export default {
     moveDraftToArticles,
     rejectDraft,
     getDraftStatus,
-    getAllCatId
+    getAllCatId,
+    findByCatId
 };

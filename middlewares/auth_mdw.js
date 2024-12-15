@@ -26,3 +26,10 @@ export function isEditor(req, res, next) {
     }
     next();
 }
+
+export function isSubscriber(req, res, next) {
+    if (req.session.authUser.permission < 1) {
+        return res.render('403');
+    }
+    next();
+}

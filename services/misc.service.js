@@ -17,7 +17,8 @@ const miscService = {
                 PublishDate: db.fn.now(), 
                 Author: articleData.author,
                 status:'pending',
-                is_premium: articleData.is_premium
+                is_premium: 0,
+                CatID: articleData.catID
             });
             return articleId;
         } catch (error) {

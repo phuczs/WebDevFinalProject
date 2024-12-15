@@ -6,12 +6,17 @@ import { isAuth, isEditor } from '../middlewares/auth_mdw.js';
 const router = express.Router();
 
 router.get('/index', isAuth, isEditor, async (req, res) => {
-    const drafts = await editorService.getAllDrafts();
+    const catId = req.query.catId || 0;
+    const drafts = await editorService.findByCatId(catId);
     const draftsWithStatus = await Promise.all(drafts.map(async draft => {
         const status = await editorService.getDraftStatus(draft.NewsID);
         return { ...draft, Status: status };
     }));
-    res.render('vwEditor/index', { list: draftsWithStatus });
+    res.render('vwEditor/index', { 
+        list: draftsWithStatus,
+        catId: catId,
+        draft: drafts
+     });
 });
 
 router.get('/modify', isAuth, isEditor, async function (req, res) {

@@ -18,6 +18,9 @@
         </a>
         {{#if this.article.is_premium}}
         <span class="badge badge-warning mb-2"><i class="bi bi-gem"></i>Premium</span>
+        <a class="btn btn-sm btn-success" href="/articles/download?id={{this.article.NewsID}}" role="button">
+          Download Article <i class="bi bi-download"></i>
+        </a>
         {{else}}
         <span class="badge badge-secondary mb-2"><i class="bi bi-person"></i></i>Free</span>
         {{/if}}
@@ -67,4 +70,3 @@
     <p class="card-text">Thank you for reading!</p>
   </div>
 </div>
-
