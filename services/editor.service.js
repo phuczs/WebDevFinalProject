@@ -23,7 +23,12 @@ async function getAllCatId() {
 async function moveDraftToArticles(id) {
     const draft = await db('draft').where('NewsID', id).first();
     if (draft) {
-        await db('articles').insert(draft);
+        const updatedDraft = {
+            ...draft,
+            CatID: draft.CatID,
+            is_premium: draft.is_premium
+        };
+        await db('articles').insert(updatedDraft);
         await db('draft').where('NewsID', id).del();
     }
 }

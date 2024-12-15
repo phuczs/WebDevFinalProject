@@ -3,10 +3,44 @@
     .upload-container {
         max-width: 800px;
         margin: 2rem auto;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 10px;
     }
     .card {
         border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        overflow: hidden;
+    }
+    .card-header {
+        background: linear-gradient(45deg, #007bff, #0056b3);
+        color: #fff;
+        text-align: center;
+        font-size: 1.25rem;
+        padding: 1rem;
+    }
+    .form-label {
+        font-weight: bold;
+        color: #333;
+    }
+    .form-control, .form-check-input {
+        border-radius: 5px;
+    }
+    .btn {
+        border-radius: 20px;
+        padding: 0.5rem 1.5rem;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+    .alert-success {
+        border-radius: 5px;
+        margin-bottom: 1rem;
     }
 </style>
 {{/section}}
@@ -51,7 +85,7 @@
     <form action="/editor/accept" method="post">
         <input type="hidden" name="id" value="{{draft.NewsID}}">
         <div class="card">
-            <h5 class="card-header bg-primary text-white">
+            <h5 class="card-header">
                 <i class="bi bi-pencil-square me-2"></i>Modify Article
             </h5>
             <div class="card-body">
@@ -88,8 +122,13 @@
                     <label for="content" class="form-label">Article Content</label>
                     <textarea id="content" name="content">{{draft.Content}}</textarea>
                 </div>
+
+                <div class="form-group mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="isPremium" name="is_premium" {{#if draft.is_premium}}checked{{/if}}>
+                    <label class="form-check-label" for="isPremium">Premium Article</label>
+                </div>
             </div>
-            <div class="card-footer">
+            <div class="card-footer text-center">
                 <button type="submit" class="btn btn-primary" formaction="/editor/accept">
                     <i class="bi bi-check-circle me-2"></i>Accept
                 </button>
