@@ -15,7 +15,7 @@ import miscRouter from './routes/misc.route.js';
 import editorRouter from './routes/editor.route.js';
 import categoryService from './services/category.service.js';
 import latestRouter from './routes/latest.route.js';
-
+import topRouter from './routes/top.route.js';
 
 
 const app = express();
@@ -78,6 +78,7 @@ app.use('/account', accountRouter);
 app.use('/articles',articleUserRouter);
 app.use('/',searchRouter);
 app.use('/latest', latestRouter);
+app.use('/top', topRouter);
 
 import { isAuth, isAdmin, isAuthor, isEditor } from './middlewares/auth_mdw.js';
 app.use('/admin/categories', isAuth, isAdmin, categoryRouter);
