@@ -1,9 +1,21 @@
 import db from '../utils/db.js';
 import bcrypt from 'bcryptjs';
 export default {
+    getAllUsers() {
+        return db('users').select('*');
+    },
     // Find user by username
     findByUsername(username) {
         return db('users').where('username', username).first();
+    },
+    deleteUser(id) {
+        return db('users').where('id', id).delete();
+    },
+    findById(id) {
+        return db('users').where('id', id).first();
+    },
+    extendActivation(id) {
+        return db('users').where('id', id).update({ activation_expiry: db.raw('DATE_ADD(NOW(), INTERVAL 7 DAY)') });
     },
 
     // Add new user

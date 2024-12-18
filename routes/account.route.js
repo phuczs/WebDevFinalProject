@@ -237,6 +237,4 @@ router.get('/is-available', async function(req, res) {
   return res.json(false);
 });
 
-
-
 export default router;

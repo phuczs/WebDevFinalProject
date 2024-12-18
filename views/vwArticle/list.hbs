@@ -1,15 +1,23 @@
-<div class="card"></div>
-  <h5 class="card-header">
+<div class="card">
+  <h5 class="card-header bg-primary text-white">
     Articles
   </h5>
   <div class="card-body">
-    <table class="table">
-      <thead>
+    <div class="mb-3 text-end">
+      <a class="btn btn-success" href="/admin/articles/add-news" role="button">
+        <i class="bi bi-plus-circle"></i> Add Article
+      </a>
+    </div>
+    <table class="table table-bordered">
+      <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
           <th scope="col">Title</th>
-          <th scope="col">Price</th>
-          <th scope="col">Quantity</th>
+          <th scope="col">Category</th>
+          <th scope="col">Author</th>
+          <th scope="col">Is Premium</th>
+          <th scope="col">Abstract</th>
+          <th scope="col">Publish Date</th>
           <th scope="col">&nbsp;</th>
         </tr>
       </thead>
@@ -18,10 +26,13 @@
         <tr>
           <th scope="row">{{NewsID}}</th>
           <td>{{Title}}</td>
+          <td>{{CatName}}</td>
+          <td>{{Author}}</td>
+          <td>{{#if is_premium}}<span class="text-success">Yes</span>{{else}}<span class="text-danger">No</span>{{/if}}</td>
           <td>{{Abstract}}</td>
           <td>{{PublishDate}}</td>
           <td class="text-right">
-            <a class="btn btn-sm btn-primary" href="#" role="button">
+            <a class="btn btn-sm btn-primary" href="/admin/articles/edit-news?id={{NewsID}}" role="button">
               <i class="bi bi-pencil-square"></i>
             </a>
           </td>

@@ -1,0 +1,31 @@
+<div class="card shadow-sm mb-4">
+  <h5 class="card-header bg-info text-white">
+    <i class="bi bi-pencil-square me-2"></i> Edit User
+  </h5>
+  <div class="card-body">
+    <form method="post" action="" class="d-inline">
+      <input type="hidden" name="id" value="{{user.id}}">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username" value="{{user.username}}" readonly>
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{user.name}}">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value="{{user.email}}">
+      </div>
+      <div class="mb-3">
+        <label for="role" class="form-label">Role</label>
+        <input type="text" class="form-control" id="role" name="role" value="{{user.role}}">
+      </div>
+      <div class="mb-3">
+        <label for="activation_expiry" class="form-label">Activation Expiry</label>
+        <input type="text" class="form-control" id="activation_expiry" name="activation_expiry" value="{{user.activation_expiry}}" readonly>
+      </div>
+      <button type="submit" class="btn btn-primary me-2">Save Changes</button>
+    </form>
+  </div>
+</div>

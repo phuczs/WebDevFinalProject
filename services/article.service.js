@@ -19,4 +19,16 @@ export default{
       countByCatId(catId) {
         return db('articles').where('CatID', catId).count('* as total').first();
       },
+
+      update(id, entity) {
+        return db('articles').where('NewsID', id).update(entity);
+      },
+
+      delete(id) {
+        return db('articles').where('NewsID', id).del();
+      },
+
+      add(entity) {
+        return db('articles').insert(entity);
+      }
 }
