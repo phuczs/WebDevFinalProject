@@ -16,7 +16,7 @@ import editorRouter from './routes/editor.route.js';
 import categoryService from './services/category.service.js';
 import latestRouter from './routes/latest.route.js';
 import topRouter from './routes/top.route.js';
-
+import bnewRouter from './routes/bnews.route.js';
 
 const app = express();
 app.set('trust proxy', 1); // trust first proxy
@@ -79,6 +79,7 @@ app.use('/articles',articleUserRouter);
 app.use('/',searchRouter);
 app.use('/latest', latestRouter);
 app.use('/top', topRouter);
+app.use('/bnews', bnewRouter);
 
 import { isAuth, isAdmin, isAuthor, isEditor } from './middlewares/auth_mdw.js';
 app.use('/admin/categories', isAuth, isAdmin, categoryRouter);

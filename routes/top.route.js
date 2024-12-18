@@ -38,16 +38,4 @@ router.get('/food1', function(req, res) {
     res.render('vwTop/food1')
 });
 
-router.get('/sk', function(req, res) {
-    res.render('vwTop/sk')
-});
-
-router.get('/tik', function(req, res) {
-    res.render('vwTop/tik')
-});
-
-router.get('/book', function(req, res) {
-    res.render('vwTop/book')
-});
-
 export default router;
