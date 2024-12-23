@@ -195,26 +195,23 @@ router.post('/change-password', isAuth, async function(req, res) {
 });
 
 router.post('/profile', isAuth, async function(req, res) {
-    const { name, email } = req.body;
+    const { name, email, request } = req.body;
     const user = req.session.authUser;
 
-    console.log('Profile update request received:', { name, email }); // Log the incoming data
+    console.log('Profile update request received:', { name, email });
 
-    // Create an updated entity with the new values
     const updatedEntity = {
-        name: name || user.name, // Use existing name if not provided
-        email: email || user.email // Use existing email if not provided
+        name: name || user.name,
+        email: email || user.email,
+        request: request ? 1 : user.request
     };
 
     try {
-        // Update the user's profile in the database
-        await userService.update(user.username, updatedEntity);
-        console.log('Profile updated in database:', updatedEntity); // Log successful update
+        await userService.updateProfile(user.username, updatedEntity);
+        console.log('Profile updated in database:', updatedEntity);
 
-        // Update the session user data
         req.session.authUser = { ...user, ...updatedEntity };
 
-        // Redirect to profile with a success message
         res.render('vwAccount/profile', {
             user: req.session.authUser,
             successMessage: 'Your profile has been updated successfully!'

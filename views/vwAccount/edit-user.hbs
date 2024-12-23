@@ -22,10 +22,15 @@
         <input type="text" class="form-control" id="role" name="role" value="{{user.role}}">
       </div>
       <div class="mb-3">
+        <label for="permission" class="form-label">Permission</label>
+        <input type="text" class="form-control" id="permission" name="permission" value="{{user.permission}}">
+      </div>
+      <div class="mb-3">
         <label for="activation_expiry" class="form-label">Activation Expiry</label>
         <input type="text" class="form-control" id="activation_expiry" name="activation_expiry" value="{{user.activation_expiry}}" readonly>
       </div>
       <button type="submit" class="btn btn-primary me-2">Save Changes</button>
+      <a href="/admin/users" class="btn btn-secondary">Back</a>
     </form>
   </div>
 </div>

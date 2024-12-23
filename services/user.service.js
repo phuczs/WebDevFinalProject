@@ -34,10 +34,11 @@ export default {
     },
 
     // New function to update user profile
-    async updateProfile(username, { name, email }) {
+    async updateProfile(username, { name, email, request }) {
         const updatedEntity = {};
         if (name) updatedEntity.name = name;
         if (email) updatedEntity.email = email;
+        if (request) updatedEntity.request = 1;
 
         return await this.update(username, updatedEntity);
     },
@@ -87,5 +88,6 @@ export default {
                 otp: null,
                 otp_expiry: null
             });
-    }
+    },
+    
 };

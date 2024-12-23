@@ -51,7 +51,9 @@ router.get('/add-news', async function (req, res) {
 
 router.post('/add-news', async function (req, res) {
   const { title, content, abstract, CatName, CatID } = req.body;
-  await articleService.add({ title, content, abstract, CatName, CatID });
+  const author = req.session.authUser.name;
+  const PublishDate = new Date();
+  await articleService.add({ title, content, abstract, CatName, CatID, author, PublishDate });
   res.redirect('/admin/articles');
 });
 

@@ -36,17 +36,18 @@ router.get('/edit-user', async function(req, res) {
 });
 
 router.post('/edit-user', async function(req, res) {
-    const { id, name, email, role } = req.body;
+    const { id, name, email, role, permission } = req.body;
     const user = await userService.findById(id);
     if (user) {
         const updatedEntity = {
             name: name || user.name,
             email: email || user.email,
-            role: role || user.role
+            role: role || user.role,
+            permission: permission || user.permission
         };
         try {
             await userService.update(user.username, updatedEntity);
-            res.redirect('/admin/users');
+            res.render('vwAccount/edit-user', { user: { ...user, ...updatedEntity }, successMessage: 'User updated successfully!' });
         } catch (error) {
             console.error('Error updating user:', error);
             res.status(500).send('Error updating user');

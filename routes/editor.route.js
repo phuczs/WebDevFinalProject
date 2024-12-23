@@ -22,7 +22,7 @@ router.get('/index', isAuth, isEditor, async (req, res) => {
 router.get('/modify', isAuth, isEditor, async function (req, res) {
     const id = +req.query.id || 0;
     const entity = await editorService.getDraftById(id);
-    const categories = await miscService.getAllCategories();
+    const categories = await editorService.findByCatId(entity.CatID);
     if (!entity) {
       return res.redirect('/editor/index');
     }
@@ -73,8 +73,9 @@ router.post('/reject', isAuth, isEditor, async function (req, res) {
 router.get('/approval', isAuth, isEditor, async function (req, res) {
     const id = +req.query.id || 0;
     const entity = await editorService.getDraftById(id);
-    const categories = await miscService.getAllCategories();
-    const categoryIds = await editorService.getAllCatId();
+    const categories = await editorService.findByCatName(entity.CatName);
+    const categoryIds = await editorService.findByCatId(entity.CatID);
+    const list = await editorService.getAllCategories();
     if (!entity) {
       return res.redirect('/editor/index');
     }
@@ -85,7 +86,8 @@ router.get('/approval', isAuth, isEditor, async function (req, res) {
       draft: entity,
       categories: categories,
       categoryIds: categoryIds,
-      status: status
+      status: status,
+      list: list
     });
 });
 
