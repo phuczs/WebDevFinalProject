@@ -19,6 +19,7 @@ import topRouter from './routes/top.route.js';
 import bnewRouter from './routes/bnews.route.js';
 import top10Router from './routes/top10.route.js';
 import footerRouter from './routes/footer.route.js';
+import userRouter from './routes/user.route.js';
 
 const app = express();
 app.set('trust proxy', 1); // trust first proxy
