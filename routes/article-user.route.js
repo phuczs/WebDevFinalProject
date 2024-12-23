@@ -35,6 +35,13 @@ router.get('/byCat', async function (req, res) {
 router.get('/detail', async function (req, res) {
     const id = req.query.id || 0;
     const article = await articleService.findById(id);
+
+    if (article.is_premium && (!req.session.authUser || req.session.authUser.permission < 1)) {
+        return res.status(403).render('403', {
+            message: 'You do not have permission to access this premium article.'
+        });
+    }
+
     res.render('vwArticle/detail', {
       article: article
     });

@@ -88,6 +88,7 @@ app.use('/footer', footerRouter);
 import { isAuth, isAdmin, isAuthor, isEditor } from './middlewares/auth_mdw.js';
 app.use('/admin/categories', isAuth, isAdmin, categoryRouter);
 app.use('/admin/articles', isAuth, isAdmin, articleRouter);
+app.use('/admin/users', isAuth, isAdmin, userRouter);
 app.use('/misc', isAuth, isAuthor, isAdmin, miscRouter);
 app.use('/editor', isAuth, isEditor, isAdmin, editorRouter);
 

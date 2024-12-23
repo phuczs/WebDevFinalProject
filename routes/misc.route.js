@@ -2,7 +2,7 @@ import express from 'express';
 import multer from 'multer';
 import miscService from '../services/misc.service.js';
 import editorService from '../services/editor.service.js';
-import { isAuth } from '../middlewares/auth_mdw.js';
+import { isAuth} from '../middlewares/auth_mdw.js';
 
 const router = express.Router();
 const upload = multer({ dest: './static/imgs/news/{articleId}/' });
@@ -28,7 +28,7 @@ router.post('/upload', isAuth, async (req, res) => {
             catName: req.body.catName,
             author: req.session.authUser.name,
             status: 'pending',
-            is_premium: 0,
+            is_premium: req.body.is_premium,
             catID: req.body.catID
         };
 

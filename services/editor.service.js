@@ -11,6 +11,11 @@ async function findByCatId(catId) {
     return db('draft').where('CatID', catId);
   }
 
+async function findByCatName(catName) {
+    return db('draft').where('CatName', catName);
+  }
+
+
 async function updateDraft(id, draft) {
     return await db('draft').where('NewsID', id).update(draft);
 }
@@ -32,7 +37,11 @@ async function moveDraftToArticles(id) {
             Abstract: draft.Abstract,
             PublishDate: draft.PublishDate,
             CatID: draft.CatID,
-            is_premium: draft.is_premium
+            is_premium: draft.is_premium,
+            content: draft.Content,
+            author: draft.Author,
+            status: 'published',
+            catName: draft.CatName
         };
         await db('articles').insert(updatedDraft);
         await db('draft').where('NewsID', id).del();
@@ -58,5 +67,6 @@ export default {
     rejectDraft,
     getDraftStatus,
     getAllCatId,
-    findByCatId
+    findByCatId,
+    findByCatName
 };
