@@ -14,6 +14,11 @@ import searchRouter from './routes/search.route.js';
 import miscRouter from './routes/misc.route.js';
 import editorRouter from './routes/editor.route.js';
 import categoryService from './services/category.service.js';
+import latestRouter from './routes/latest.route.js';
+import topRouter from './routes/top.route.js';
+import bnewRouter from './routes/bnews.route.js';
+import top10Router from './routes/top10.route.js';
+import footerRouter from './routes/footer.route.js';
 import userRouter from './routes/user.route.js';
 
 const app = express();
@@ -73,8 +78,13 @@ app.get('/test', function (req, res) {
 });
 
 app.use('/account', accountRouter);
-app.use('/articles', articleUserRouter);
-app.use('/', searchRouter);
+app.use('/articles',articleUserRouter);
+app.use('/',searchRouter);
+app.use('/latest', latestRouter);
+app.use('/top', topRouter);
+app.use('/bnews', bnewRouter);
+app.use('/top10', top10Router);
+app.use('/footer', footerRouter);
 
 import { isAuth, isAdmin, isAuthor, isEditor } from './middlewares/auth_mdw.js';
 app.use('/admin/categories', isAuth, isAdmin, categoryRouter);

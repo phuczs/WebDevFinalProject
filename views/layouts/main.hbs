@@ -8,6 +8,7 @@
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="icon" href="/static/imgs/news/icon.ico" type="image/x-icon">
     {{{_sections.css}}}  
   <style>
     .sidebar {
@@ -16,7 +17,11 @@
       height: calc(100vh - 56px); /* Adjust based on navbar height */
       padding-top: 1rem;
       overflow-x: hidden;
-      overflow-y: auto;
+      overflow-y: scroll;
+      scrollbar-width: none;
+    }
+    .sidebar::-webkit-scrollbar {
+      display: none;
     }
 
     .sidebar-sticky {
@@ -26,8 +31,11 @@
       padding-top: .5rem;
       overflow-x: hidden;
       overflow-y: auto;
+      
     }
-
+    .sidebar-sticky::-webkit-scrollbar {
+      display: none;
+    }
     .sidebar .nav-link {
       font-weight: 500;
       color: #333;
@@ -40,6 +48,10 @@
     .sidebar-heading {
       font-size: .75rem;
       text-transform: uppercase;
+    }
+    .badge-sm {
+      font-size: 0.8em;
+      padding: 0.2em 0.4em;
     }
   </style>
   <style>
@@ -207,8 +219,8 @@
   <div class="container">
     <!-- Brand Logo -->
     <a class="navbar-brand" href="/">
-      <img src="/static/imgs/news/icon.jpg" alt="E-News" style="width: 50px; height: 50px; border-radius: 8px;">
-      E-News
+      <img src="/static/imgs/news/icon.jpg" alt="E-News" style="width: 50px; height: 50px; border-radius: 8px;" class="mr-4">
+      <span class="pt-2">E-News</span>
     </a>
 
     <!-- Toggler for mobile view -->
@@ -339,22 +351,96 @@
   </div>
 </nav>
 <!-- Add this after the navbar and before the main content -->
-<div class="container-fluid">
+<div class="container-fluid ">
   <div class="row">
     <!-- Sidebar -->
     <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span class="ml-1 text-dark" style="font-weight: bold;">Top 10 Categories</span>
+      </h6>
       <div class="sidebar-sticky pt-3">
         <!-- Categories Section -->
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Categories</span>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            {{#each lcCategories}}
-              <a href="/articles/byCat?id={{CatID}}" class="nav-link">{{CatName}}</a>
-            {{/each}}
-          </li>
-        </ul>
+        <div class="card h-auto bg-transparent" style="border: none;">
+          <a href="/top10/cn1">
+            <img src="/static/imgs/news/cn1.jpg" alt="finals" class="card-img-top">
+            <div class="card-body mb-0" style="padding: 0; padding-top:5px" >
+              <span class="badge badge-danger mb-0">Asia</span>
+              <h5 class="card-title" style="font-weight: bold;">Can China play a role in avoiding an all-out war in the Middle East?</h5>
+            </div>  
+          </a>
+        </div>
+        <div class="card h-auto bg-transparent" style="border: none;">
+          <a href="/top10/assad1">
+            <img src="/static/imgs/news/assad1.jpg" alt="finals" class="card-img-top">
+            <div class="card-body mb-0" style="padding: 0; padding-top:5px" >
+              <span class="badge badge-danger badge-sm">Middle East</span>
+              <h5 class="card-title" style="font-weight: bold;">Former Assad security forces hand in weapons to new Syrian government</h5>
+            </div>  
+          </a>
+        </div>
+        <div class="card h-auto bg-transparent" style="border: none;">
+          <a href="/top10/us1">
+            <img src="/static/imgs/news/cog1.jpg" alt="finals" class="card-img-top">
+            <div class="card-body mb-0" style="padding: 0; padding-top:5px" >
+              <span class="badge badge-danger badge-sm">Politics</span>
+              <h5 class="card-title" style="font-weight: bold;">What’s at risk if Congress doesn’t fund the government by Friday night</h5>
+            </div>  
+          </a>
+        </div>
+        <div class="card h-auto bg-transparent" style="border: none;">
+          <a href="/top10/wal1">
+            <img src="/static/imgs/news/wal1.jpg" alt="finals" class="card-img-top">
+            <div class="card-body mb-0" style="padding: 0; padding-top:5px" >
+              <span class="badge badge-primary badge-sm">Business</span>
+              <h5 class="card-title" style="font-weight: bold;">As Americans bargain shop, six-figure earners flock to Walmart</h5>
+            </div>  
+          </a>
+        </div>
+        <div class="card h-auto bg-transparent" style="border: none;">
+          <a href="/top10/tech1">
+            <img src="/static/imgs/news/tech1.jpg" alt="finals" class="card-img-top">
+            <div class="card-body mb-0" style="padding: 0; padding-top:5px" >
+              <span class="badge badge-primary badge-sm">Technology</span>
+              <h5 class="card-title" style="font-weight: bold;">‘We’re at this pivotal moment.’ These young innovators are tackling some of humanity’s biggest problems</h5>
+            </div>  
+          </a>
+        </div>
+        <div class="card h-auto bg-transparent" style="border: none;">
+          <a href="/top10/dance1">
+            <img src="/static/imgs/news/dance1.jpg" alt="finals" class="card-img-top">
+            <div class="card-body mb-0" style="padding: 0; padding-top:5px" >
+              <span class="badge badge-primary badge-sm">Sport</span>
+              <h5 class="card-title" style="font-weight: bold;">The ‘Trump dance’ takes the sports world by storm</h5>
+            </div>  
+          </a>
+        </div>
+        <div class="card h-auto bg-transparent" style="border: none;">
+          <a href="/top10/happy1">
+            <img src="/static/imgs/news/happy1.jpg" alt="finals" class="card-img-top">
+            <div class="card-body mb-0" style="padding: 0; padding-top:5px" >
+              <span class="badge badge-danger badge-sm">Entertainment</span>
+              <h5 class="card-title" style="font-weight: bold;">How to make a movie night snack board</h5>
+            </div>  
+          </a>
+        </div>
+        <div class="card h-auto bg-transparent" style="border: none;">
+          <a href="/top10/f1">
+            <img src="/static/imgs/news/f1.jpg" alt="finals" class="card-img-top">
+            <div class="card-body mb-0" style="padding: 0; padding-top:5px" >
+              <span class="badge badge-success badge-sm">Health</span>
+              <h5 class="card-title" style="font-weight: bold;">Which foods are ‘healthy’? FDA has new requirements for food labels</h5>
+            </div>  
+          </a>
+        </div>
+        <div class="card h-auto bg-transparent" style="border: none;">
+          <a href="/top10/game1">
+            <img src="/static/imgs/news/game1.webp" alt="finals" class="card-img-top">
+            <div class="card-body mb-0" style="padding: 0; padding-top:5px" >
+              <span class="badge badge-success badge-sm">Games</span>
+              <h5 class="card-title" style="font-weight: bold;">Game Awards 2024: Astro Bot Wins Game of the Year</h5>
+            </div>  
+          </a>
+        </div>
       </div>
     </div>
 
@@ -390,21 +476,34 @@ crossorigin="anonymous"></script>
       <!-- Company Info -->
       <div class="col-lg-3 mb-4">
         <div class="d-flex align-items-center mb-3">
-          <img src="/static/imgs/news/icon.jpg" alt="E-News" style="width: 40px; height: 40px; border-radius: 8px;">
-          <h5 class="ms-2 mb-0">E-News</h5>
+          <img src="/static/imgs/news/icon.jpg" alt="E-News" style="width: 100px; height: 50px; border-radius: 8px;">
+          <a class="mb-1 ml-5 text-center text-white" href="/articles/byCat?id=7"><i class="bi bi-globe"></i> Asia</a>
+          <a class="ms-2 mb-1 ml-5 text-center text-white" href="/articles/byCat?id=9"><i class="bi bi-globe"></i> Middle East</a>
+          <a class="ms-2 mb-0 ml-5 text-center text-white" href="/articles/byCat?id=2"><i class="bi bi-bank"></i> Politics</a>       
+          <a class="ms-2 mb-0 ml-5 text-center text-white" href="/articles/byCat?id=10"><i class="bi bi-briefcase"></i> Business</a>        
+          <a class="ms-2 mb-0 ml-5 text-center text-white" href="/articles/byCat?id=1"><i class="bi bi-cpu"></i> Technology</a>
+          <a class="ms-2 mb-0 ml-5 text-center text-white" href="/articles/byCat?id=3"><i class="bi bi-trophy"></i> Sports</a>
+          <a class="ms-2 mb-0 ml-5 text-center text-white" href="/articles/byCat?id=8"><i class="bi bi-film"></i> Entertainment</a>
+          <a class="ms-2 mb-0 ml-5 text-center text-white" href="/articles/byCat?id=11"><i class="bi bi-heart"></i> Health</a>
+          <a class="ms-2 mb-0 ml-5 text-center text-white" href="/articles/byCat?id=32"><i class="bi bi-controller"></i> Games</a>
         </div>
-        <p class="text-muted">Your trusted source for breaking news, analysis, and in-depth reporting from around the world.</p>
-        <div class="social-links">
-          <a href="https://www.facebook.com/profile.php?id=61570016583043" class="text-light me-3"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="text-light me-3"><i class="bi bi-twitter"></i></a>
-          <a href="#" class="text-light me-3"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="text-light me-3"><i class="bi bi-linkedin"></i></a>
+        <div class="d-flex my-3" style="width: 500px;">
+          <a href="/footer/tou1" target="_blank" class="mb-1 ml-5" style="font-size: 12px; color:white">Terms of Use</a>
+          <a href="/footer/pp1" target="_blank" class="mb-1 ml-5" style="font-size: 12px; color:white">Privacy Policy</a>
+          <a href="/footer/coo1" target="_blank" class="mb-1 ml-5" style="font-size: 12px; color:white">Cookies</a>
+        </div>
+        <div class="d-flex my-0" style="width: 500px; ">
+          <h5 class="ms-2 mb-0 ml-5 text-center" style="font-size: larger;">Follow us on:</h5>
+          <a href="https://www.facebook.com/profile.php?id=61570016583043" target="_blank" class="ms-2 mb-0 ml-5 text-center"><i class="bi bi-facebook"></i></a>
+          <a href="https://x.com/WorldViet66666" class="ms-2 mb-0 ml-5 text-center" target="_blank"><i class="bi bi-twitter"></i></a>
+          <a href="https://www.instagram.com/viet.namworldexpress/" class="ms-2 mb-0 ml-5 text-center" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/viet-nam-world-express-872325342/" target="_blank" class="ms-2 mb-0 ml-5 text-center"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
-
+      
       <!-- Quick Links -->
-      <div class="col-lg-3 mb-4">
-        <h5 class="mb-3">Quick Links</h5>
+      {{!-- <div class="col-lg-3 mb-4">
+        <h5 class="mb-3">Contact</h5>
         <ul class="list-unstyled">
           <li class="mb-2"><a href="#" class="text-muted text-decoration-none">About Us</a></li>
           <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Contact Us</a></li>
@@ -412,22 +511,10 @@ crossorigin="anonymous"></script>
           <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Advertise</a></li>
           <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Terms of Service</a></li>
         </ul>
-      </div>
-
-      <!-- Categories -->
-      <div class="col-lg-3 mb-4">
-        <h5 class="mb-3">Categories</h5>
-        <ul class="list-unstyled">
-          <li class="mb-2"><a href="#" class="text-muted text-decoration-none">World News</a></li>
-          <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Politics</a></li>
-          <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Business</a></li>
-          <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Technology</a></li>
-          <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Entertainment</a></li>
-        </ul>
-      </div>
+      </div> --}}
 
       <!-- Newsletter -->
-      <div class="col-lg-3 mb-4">
+      {{!-- <div class="col-lg-3 mb-4">
         <h5 class="mb-3">Newsletter</h5>
         <p class="text-muted">Subscribe to our newsletter for daily updates.</p>
         <form class="mb-3">
@@ -441,10 +528,10 @@ crossorigin="anonymous"></script>
         <p class="small text-muted">
           By subscribing, you agree to our Privacy Policy and consent to receive updates.
         </p>
-      </div>
+      </div> --}}
     </div>
   </div>
-</footer>
+<h5 class="mx-1" style="font-weight: lighter; font-size:8px; text-align:center">Copyright 2024 E-News. All rights reserved.  We are not responsible for the content of external sites.</h5>
 </footer>
 
 </body>

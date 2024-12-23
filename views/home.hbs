@@ -5,36 +5,46 @@
     <li data-target="#newsCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#newsCarousel" data-slide-to="1"></li>
     <li data-target="#newsCarousel" data-slide-to="2"></li>
+    <li data-target="#newsCarousel" data-slide-to="3"></li>
   </ol>
 
   <!-- Carousel Inner -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/static/imgs/news/tech-summit.png" class="d-block w-100" alt="Breaking News">
-      <div class="carousel-caption">
-        <span class="badge badge-danger mb-2">Breaking News</span>
-        <h2>Global Tech Summit 2024 Announces Breakthrough in AI Development</h2>
-        <p class="d-none d-md-block">Leading tech companies unveil collaborative AI initiative aimed at responsible innovation and development.</p>
-        <button class="btn btn-primary mt-2">Read More</button>
-      </div>
+      <a href="/bnews/tik1">
+        <img src="/static/imgs/news/tik1.jpg" class="d-block w-100" alt="Breaking News">
+        <div class="carousel-caption">
+          <h2>Supreme Court agrees to hear case over TikTok ban</h2>
+          <p class="d-none d-md-block">The high court agreed to expedite the case and hear arguments on January 10.</p>
+        </div>
+      </a>
     </div>
     <div class="carousel-item">
-      <img src="/static/imgs/news/finals-1.jpg" class="d-block w-100" alt="Sports Update">
-      <div class="carousel-caption">
-        <span class="badge badge-success mb-2">Sports</span>
-        <h2>Historic Victory in World Championship Finals</h2>
-        <p class="d-none d-md-block">Underdog team makes history with unprecedented championship win in dramatic final match.</p>
-        <button class="btn btn-primary mt-2">Read More</button> 
-      </div>
+      <a href="/bnews/rodman1">
+        <img src="/static/imgs/news/rodman1.jpg" class="d-block w-100" alt="Breaking News">
+        <div class="carousel-caption">
+          <h2>‘He’s not a dad’: Olympic gold medalist Trinity Rodman opens up on strained relationship with father Dennis Rodman</h2>
+          <p class="d-none d-md-block">“He’s not a dad. Maybe by blood, but nothing else,” she told host Alex Cooper. “Hearing his voice is painful.”</p>
+        </div>
+      </a>
     </div>
     <div class="carousel-item">
-      <img src="https://picsum.photos/1920/600" class="d-block w-100" alt="Business News">
-      <div class="carousel-caption">
-        <span class="badge badge-warning mb-2">Business</span>
-        <h2>Major Economic Reform Package Announced</h2>
-        <p class="d-none d-md-block">Government unveils comprehensive economic package aimed at boosting growth and stability.</p>
-        <button class="btn btn-primary mt-2">Read More</button>
-      </div>
+      <a href="/bnews/cos1">
+        <img src="/static/imgs/news/cos1.jpg" class="d-block w-100" alt="Breaking News">
+        <div class="carousel-caption">
+          <h2>Astronomers discover two populations of unusual dark comets in our solar system</h2>
+          <p class="d-none d-md-block">Gaining a better understanding of dark comets could shed light on whether these objects contributed to the early evolution of Earth by crashing into it while the planet was forming.</p>
+        </div>
+      </a>
+    </div>
+    <div class="carousel-item">
+      <a href="/bnews/nk1">
+        <img src="/static/imgs/news/nk1.jpg" class="d-block w-100" alt="Breaking News">
+        <div class="carousel-caption">
+          <h2>Indoctrinated, loyal and well trained: Don’t underestimate North Korean soldiers in Russia, some experts say</h2>
+          <p class="d-none d-md-block">About 11,000 North Korean soldiers find themselves at the center of Europe’s biggest conflict since World War II.</p>
+        </div>
+      </a>
     </div>
   </div>
 
@@ -49,63 +59,87 @@
   </a>
 </div>
 <!-- Featured News Grid -->
-<div class="container mt-4">
+<div class="container mt-4 bg-dark" style="font-weight: bold;">
   <!-- Top Stories Section -->
-  <div class="row mb-4">
+  <div class="row mb-4" style="font-weight: bold;">
     <div class="col-12">
-      <h2 class="section-title">Top Stories</h2>
+      <h2 class="section-title mt-3" style="font-weight: bold; color:white;">Top Stories</h2>
+    </div>
+    <div class="col-md-4 " style="">
+      <div class="card mb-3" >
+          <a href="/top/rus1">
+            <img src="/static/imgs/news/rus1.webp" alt="phones" class="card-img-top-top img-fluid">
+            <div class="card-body">
+              <h3 class="card-title mb-0 mt-1"></h3><span class="text-danger mr-1"><i class="bi bi-record-circle text-danger mr-1"></i>LIVE</span>High-ranking Russian general killed in explosion in Moscow</h3>
+            </div>
+          </a>
+      </div>
+      <div class="card mb-3">
+            <a href="/top/pal1">
+              <div class="card-body" style="padding:10px">
+                <h5 class="card-title" style="margin-bottom: 0;">Gaza ceasefire talks in final stage, Palestinian negotiator tells BBC</h5>
+              </div>
+            </a>
+      </div>
+      <div class="card mb-3" >
+          <a href="/top/food1">
+            <img src="/static/imgs/news/food1.jpg" alt="phones" class="card-img-top-top img-fluid">
+            <div class="card-body" style="margin-bottom: 0;padding:0">
+              <h3 class="card-title mt-2">9 of the world’s best soups</h3>
+            </div>
+          </a>
+      </div>
     </div>
     <!-- Main Story -->
-    <div class="col-md-8">
-      <div class="card">
-        <img src="/static/imgs/news/science-breakthrough.jpg" class="card-img-top" alt="Scientific breakthrough in energy research">
-        <div class="card-body">
-          <span class="badge badge-primary mb-2">Featured</span>
-          <h3 class="card-title">Major Scientific Breakthrough: New Energy Source Discovered</h3>
-          <p class="card-text">Scientists announce revolutionary discovery that could transform global energy production...</p>
-          <a href="#" class="btn btn-primary">Read More</a>
-        </div>
+    <div class="col-md-4" >
+      <div class="card mb-3" >
+        <a href="/top/us1">
+          <img src="/static/imgs/news/us1.webp" class="card-img-top-top" alt="Scientific breakthrough in energy research">
+          <div class="card-body">
+            <h3 class="card-title mb-0"><span class="text-danger mr-1"><i class="bi bi-record-circle text-danger mr-1"></i>LIVE</span>Teacher and student killed in US school shooting</h3>
+          </div>        
+        </a>
+      </div>
+      <div class="card mb-4" >
+        <a href="/top/euro1">
+          <div class="card-body" style="margin-bottom: 0;padding:0">
+            <h3 class="card-title mb-0">Everything you need to know about Euro 2025 <i class="bi bi-trophy-fill"></i></h3>
+          </div>        
+        </a>
+      </div>
+      <div class="card mb-3" >
+        <a href="/top/mouse1">
+          <img src="/static/imgs/news/mouse1.jpg" class="card-img-top-top" alt="Scientific breakthrough in energy research">
+          <div class="card-body" style="margin-bottom: 0;padding:0">
+            <h3 class="card-title mt-2">Could mouse sperm orbiting Earth be the future of humanity?</h3>
+          </div>        
+        </a>
       </div>
     </div>
     <!-- Side Stories -->
-    <div class="col-md-4">
+    <div class="col-md-4" style="">
       <div class="card mb-3">
-        <div class="row no-gutters">
-          <div class="col-4">
-            <a href="#">
-              <img src="/static/imgs/news/phone-icon.jpg" alt="phones" class="card-img-top">
-            </a>
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <span class="badge badge-info mb-1">Tech</span>
-              <h5 class="card-title">New Smartphone Release</h5>
-              <p class="card-text">All the latest news about smartphones around the world.</p>
-              <cite class="card-text" style="font-size: smaller; ">The whole world is in your palm.</cite>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div>
-        </div>
+        <a href="/top/ind1">
+          <div class="card-body pb-1" style="margin-bottom: 0;padding:0">
+            <h3 class="card-title mb-0 ">'We thought it was a ball' - the bombs killing and maiming Indian children</h3>
+          </div>        
+        </a>
       </div>
-      <div class="card mb-3">
-        <div class="row no-gutters">
-          <div class="col-4">
-            <a href="#">
-              <a href="#">
-                <img src="/static/imgs/news/stock-marker.jpg" alt="stock" class="card-img-top">
-              </a>
-            </a>
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <span class="badge badge-warning mb-1">Business</span>
-              <h5 class="card-title">Stock Market Update</h5>
-              <p>Fastest, Precise and More about the current stock market in the world.</p>
-              <cite class="card-text" style="font-size: smaller; ">Don't let it slip away.</cite>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div>
-        </div>
+      <div class="card mb-3 top-stories-left">
+        <a href="/top/hts1">
+          <img src="/static/imgs/news/hts1.webp" class="card-img-top-top" alt="Scientific breakthrough in energy research">
+          <div class="card-body">
+            <h3 class="card-title mb-0">Fear of a reckoning simmers in Assad's Alawite heartland</h3>
+          </div>        
+        </a>
+      </div>
+      <div class="card mb-3 top-stories-left">
+        <a href="/top/chel1">
+          <img src="/static/imgs/news/chel2.jpg" class="card-img-top-top" alt="Scientific breakthrough in energy research">
+          <div class="card-body">
+            <h3 class="card-title mb-0"><span class="text-info mr-1"><i class="bi bi-fire text-info mr-1"></i>HOT</span>Chelsea's Mudryk 'in shock' at failed drugs test</h3>
+          </div>        
+        </a>
       </div>
     </div>
   </div>
@@ -113,46 +147,151 @@
   <!-- Latest News Section -->
   <div class="row">
     <div class="col-12">
-      <h2 class="section-title">Latest News</h2>
+      <h2 class="section-title text-white" style="font-weight: bold;">Latest News</h2>
     </div>
     <!-- News Cards -->
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <a href="#">
-          <img src="/static/imgs/news/finals.jpeg" alt="finals" class="card-img-top">
+        <a href="/latest/c1">
+        <img src="/static/imgs/news/finals.jpeg" alt="finals" class="card-img-top">
+        <div class="card-body mb-0" >
+          <span class="badge badge-success mb-2">Sport</span>
+          <h5 class="card-title" style="font-weight: bold;">Champions League</h5>
+          <p class="card-text my-3">Get the lastest news about the most prestigious tournament in the world!</p>
+        </div>  
         </a>
-        <div class="card-body">
-          <span class="badge badge-success mb-2">Sports</span>
-          <h5 class="card-title">Championship Finals Result</h5>
-          <p class="card-text">Dramatic finish to the season as underdogs claim victory...</p>
-          <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
-        </div>
       </div>
     </div>
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <a href="#">
+        <a href="/latest/oscars">
           <img src="/static/imgs/news/oscars.jpg" alt="movies" class="card-img-top">
+          <div class="card-body">
+            <span class="badge badge-danger mb-2">Entertainment</span>
+            <h5 class="card-title" style="font-weight: bold;">Oscars</h5>
+            <p class="card-text my-3">Everything about the Oscars of 2024</p>
+          </div>
         </a>
-        <div class="card-body">
-          <span class="badge badge-danger mb-2">Entertainment</span>
-          <h5 class="card-title">Movie Awards Ceremony</h5>
-          <p class="card-text">Surprising wins and memorable moments at this year's ceremony...</p>
-          <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
-        </div>
       </div>
     </div>
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <a href="#">
-          <img src="/static/imgs/news/policy.jpg" alt="policy" class="card-img-top">
+        <a href="/latest/trump">
+          <img src="/static/imgs/news/trump1.webp" alt="policy" class="card-img-top">
+          <div class="card-body">
+            <span class="badge badge-info mb-2">Business</span>
+            <h5 class="card-title" style="font-weight: bold;">Trump gets $15m in ABC News defamation case</h5>
+            <p class="card-text my-3">The network will also publish a statement expressing "regret" for statements by George Stephanopoulos.</p>
+          </div>
         </a>
-        <div class="card-body">
-          <span class="badge badge-secondary mb-2">Politics</span>
-          <h5 class="card-title">New Policy Announcement</h5>
-          <p class="card-text">Government reveals major policy changes affecting citizens...</p>
-          <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
-        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <a href="/latest/openai">
+          <img src="/static/imgs/news/openai1.webp" alt="policy" class="card-img-top">
+            <div class="card-body">
+              <span class="badge badge-info mb-2">Business</span>
+              <h5 class="card-title" style="font-weight: bold;">OpenAI whistleblower found dead in San Francisco apartment</h5>
+              <p class="card-text my-3">The San Francisco medical examiner's office determined his death to be suicide and police found no evidence of foul play.</p>
+            </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <a href="/latest/worlds">
+          <img src="/static/imgs/news/worlds2.jpg" alt="policy" class="card-img-top">
+          <div class="card-body">
+            <span class="badge badge-success mb-2">Sport</span>
+            <h5 class="card-title" style="font-weight: bold;">LoL Worlds 2024 Finals: BLG vs T1: Back-to-back World Champions!</h5>
+            <p class="card-text my-3">T1 and BLG were at the peak of their performance. They were totally ready to battle it out in the final match of the biggest and the most important LoL esports tournament of the year. The community was ready to cheer for them.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <a href="/latest/robotsur">
+          <img src="/static/imgs/news/robotsur1.webp" alt="policy" class="card-img-top">
+          <div class="card-body">
+            <span class="badge badge-warning mb-2">Technology</span>
+            <h5 class="card-title" style="font-weight: bold;">Hip surgery trial boosted by robot technology</h5>
+            <p class="card-text my-3">The research, which is the first of its kind in the world, is being led by The Royal Devon University Healthcare NHS Foundation Trust in Exeter.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <a href="/latest/kimmich">
+          <img src="/static/imgs/news/kimmich1.webp" alt="policy" class="card-img-top">
+          <div class="card-body">
+            <span class="badge badge-success mb-2">Sport</span>
+            <h5 class="card-title" style="font-weight: bold;">'Politics is not our job' - Germany captain Kimmich</h5>
+            <p class="card-text my-3">"In general us players should stand for specific values, especially as the captain of the national team. But it is not our job to express ourselves politically all the time," Kimmich told a press conference.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <a href="/latest/israel/">
+          <img src="/static/imgs/news/israel1.webp" alt="policy" class="card-img-top">
+          <div class="card-body">
+            <span class="badge badge-secondary mb-2">Politics</span>
+            <h5 class="card-title" style="font-weight: bold;">Israel to close embassy in Ireland as it criticises 'anti-Israel policies'</h5>
+            <p class="card-text my-3">"Israel will invest its resources in advancing bilateral relations with countries worldwide according to priorities that also take into account the attitudes and actions of these states toward Israel."</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <a href="/latest/hp">
+          <img src="/static/imgs/news/hp1.webp" alt="policy" class="card-img-top">
+          <div class="card-body">
+            <span class="badge badge-danger mb-2">Entertainment</span>
+            <h5 class="card-title" style="font-weight: bold;">Harry Potter TV show to start filming in summer</h5>
+            <p class="card-text my-3">"The upcoming HBO Original Series, #HarryPotter, will be filming at Warner Bros. Studios Leavesden with production beginning in Summer 2025 and coming to Max."</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <a href="/latest/sk">
+          <img src="/static/imgs/news/sk3.webp" alt="policy" class="card-img-top">
+          <div class="card-body">
+            <span class="badge badge-secondary mb-2">Politics</span>
+            <h5 class="card-title" style="font-weight: bold;">Fear, fury and triumph: Six hours that shook South Korea</h5>
+            <p class="card-text my-3">"I couldn’t believe what I was seeing," said the student, who wished to be identified only by his surname.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <a href="/latest/tik">
+          <img src="/static/imgs/news/tik1.webp" alt="policy" class="card-img-top">
+          <div class="card-body">
+            <span class="badge badge-warning mb-2">Technology</span>
+            <h5 class="card-title" style="font-weight: bold;">TikTok asks for emergency pause to looming US ban</h5>
+            <p class="card-text my-3">TikTok and ByteDance say an injunction is also justified because Donald Trump is about to replace Joe Biden as president.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <a href="/latest/book">
+          <img src="/static/imgs/news/book1.webp" alt="policy" class="card-img-top">
+          <div class="card-body">
+            <span class="badge badge-danger mb-2">Entertainment</span>
+            <h5 class="card-title" style="font-weight: bold;" >Viral author who sold two books becomes bestseller</h5>
+            <p class="card-text my-3">"I was completely surprised really and it was all a bit overwhelming - I was just amazed and couldn't believe it."</p>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -167,11 +306,15 @@
 
   .card {
     transition: transform 0.2s;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
   }
 
   .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-decoration: underline;
   }
 
   .badge {
@@ -180,8 +323,20 @@
   }
 
   .card-img-top {
-    height: 200px;
+    height: 250px;
     object-fit: cover;
+  }
+  .top-stories-left {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .card-img-top-top {
+    width: 100%;
+    height: 250px;
+  }
+  .card-title {
+    font-weight: bold;
   }
 
   @media (max-width: 768px) {
@@ -189,5 +344,9 @@
       height: 150px;
     }
   }
+  .card-body {
+    padding: 10px;
+  }
+
 </style>
 
