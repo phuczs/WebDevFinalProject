@@ -297,9 +297,6 @@ router.post('/verify-otp', async (req, res) => {
   }
 });
 
-router.get('/reset-password', function(req, res) {
-  res.render('/vwAccount/reset-password');
-});
 
 router.post('/reset-password', async function (req, res, next) {
   const { email, otp, newPassword } = req.body;
