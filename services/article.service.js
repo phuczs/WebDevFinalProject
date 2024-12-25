@@ -15,7 +15,17 @@ export default{
     findPageByCatId(catId, limit, offset) {
         return db('articles').where('CatID', catId).limit(limit).offset(offset);
       },
+    findByTagId(tagId) {
+        return db('articles').where('tag_id', tagId);
+      },
     
+    findPageByTagId(tagId, limit, offset) {
+        return db('articles').where('tag_id', tagId).limit(limit).offset(offset);
+      },
+    countByTagId(tagId) {
+        return db('articles').where('tag_id', tagId).count('* as total').first();
+      },
+
       countByCatId(catId) {
         return db('articles').where('CatID', catId).count('* as total').first();
       },

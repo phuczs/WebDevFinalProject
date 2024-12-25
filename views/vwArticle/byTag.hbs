@@ -16,7 +16,7 @@
             <img src="/static/imgs/news/{{NewsID}}/main_thumbs.jpg" alt="{{Title}}" class="card-img-top rounded-top" title="{{Title}}">
           </a>
           <div class="card-body">
-            <span class="badge badge-success mb-2">{{CatName}}</span>
+            <span class="badge badge-info mb-2">{{tag_name}}</span>
             {{#if is_premium}}
             <span class="badge badge-warning mb-2"><i class="bi bi-gem"></i> Premium</span>
             {{else}}
@@ -42,7 +42,7 @@
         </li>
         {{else}}
         <li class="page-item">
-          <a class="page-link" href="?id={{../catId}}&page={{value}}">{{value}}</a>
+          <a class="page-link" href="?id={{../tagId}}&page={{value}}">{{value}}</a>
         </li>
         {{/if}}
         {{/each}}
@@ -94,18 +94,8 @@
   margin-bottom: 0.5rem;
 }
 
-.badge-success {
-  background-color: #28a745;
-  color: #fff;
-}
-
-.badge-warning {
-  background-color: #ffc107;
-  color: #212529;
-}
-
-.badge-secondary {
-  background-color: #6c757d;
+.badge-info {
+  background-color: #17a2b8;
   color: #fff;
 }
 </style>

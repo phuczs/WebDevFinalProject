@@ -1,0 +1,33 @@
+<div class="card">
+  <h5 class="card-header d-flex justify-content-between">
+    Tags
+    <a class="btn btn-sm btn-outline-primary" href="/admin/tags/add" role="button">
+      <i class="bi bi-plus-circle"></i>
+      New Tag
+    </a>
+  </h5>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Tag</th>
+          <th scope="col">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.tags}}
+        <tr>
+          <th scope="row">{{tag_id}}</th>
+          <td>{{tag_name}}</td>
+          <td class="text-right">
+            <a class="btn btn-sm btn-primary" href="/admin/tags/edit?id={{tag_id}}" role="button">
+              <i class="bi bi-pencil-square"></i>
+            </a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

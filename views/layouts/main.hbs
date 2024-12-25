@@ -250,6 +250,16 @@
           </div>
         </li>
         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="tagDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Tags
+          </a>
+          <div class="dropdown-menu" aria-labelledby="tagDropdown">
+            {{#each lcTags}}
+            <a class="dropdown-item" href="/articles/byTag?id={{this.tag_id}}">{{this.tag_name}}</a>
+            {{/each}}
+          </div>
+        </li>
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="writerDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Writer Workplace
           </a>
@@ -277,6 +287,7 @@
             <a class="dropdown-item" href="/admin/users"><i class="bi bi-person"></i> User Management</a>
             <a class="dropdown-item" href="/admin/categories"><i class="bi bi-list"></i> Category Management</a>
             <a class="dropdown-item" href="/admin/articles"><i class="bi bi-newspaper"></i> Article Management</a>
+            <a class="dropdown-item" href="/admin/tags"><i class="bi bi-tags"></i> Tag Management</a>
           </div>
         </li>
         

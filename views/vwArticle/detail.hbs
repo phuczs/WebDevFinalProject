@@ -2,38 +2,42 @@
 
 {{/section}}
 
-<div class="card shadow-lg mx-auto" style="max-width: 800px;">
+<div class="card shadow-lg mx-auto" style="max-width: 800px; border-radius: 15px; overflow: hidden;">
   <!-- Header -->
-  <h5 class="card-header text-center fw-bold display-4 bg-danger text-white py-4 font-weight-bold">
+  <h5 class="card-header text-center fw-bold display-4 bg-gradient text-white py-4" style="background: linear-gradient(45deg, #ff4b2b, #ff416c);">
     {{this.article.Title}}
   </h5>
 
   <!-- Body -->
-  <div class="card-body">
+  <div class="card-body" style="background-color: #f8f9fa;">
     <!-- Category Badge -->
     <div class="mb-3 text-center">  
-      <a href="/articles/byCat?id={{this.article.CatID}}" class="nav-link">
-        <span class="badge badge-info px-3 py-2 fs-6">
+      <a href="/articles/byCat?id={{this.article.CatID}}" class="nav-link d-inline-block">
+        <span class="badge badge-info px-3 py-2 fs-6" style="background-color: #17a2b8; color: #fff;">
         {{this.article.CatName}}</span>
-        </a>
-        {{#if this.article.is_premium}}
-        <span class="badge badge-warning mb-2"><i class="bi bi-gem"></i>Premium</span>
-        <a class="btn btn-sm btn-success" href="/articles/download?id={{this.article.NewsID}}" role="button">
-          Download Article <i class="bi bi-download"></i>
-        </a>
-        {{else}}
-        <span class="badge badge-secondary mb-2"><i class="bi bi-person"></i></i>Free</span>
-        {{/if}}
+      </a>
+      <a href="/articles/byTag?id={{this.article.tag_id}}" class="nav-link d-inline-block">
+        <span class="badge badge-info px-3 py-2 fs-6" style="background-color: #17a2b8; color: #fff;">
+        {{this.article.tag_name}}</span>
+      </a>
+      {{#if this.article.is_premium}}
+      <span class="badge badge-warning mb-2" style="background-color: #ffc107; color: #212529;"><i class="bi bi-gem"></i> Premium</span>
+      <a class="btn btn-sm btn-success" href="/articles/download?id={{this.article.NewsID}}" role="button" style="margin-left: 10px;">
+        Download Article <i class="bi bi-download"></i>
+      </a>
+      {{else}}
+      <span class="badge badge-secondary mb-2" style="background-color: #6c757d; color: #fff;"><i class="bi bi-person"></i> Free</span>
+      {{/if}}
     </div>
 
     <!-- Publish Date and Author -->
-    <div class="text-muted text-center mb-4">
+    <div class="text-muted text-center mb-4" style="font-size: 0.9rem;">
       <p class="mb-1"><strong>Publish Date:</strong> {{this.article.PublishDate}}</p>
       <p class="mb-0"><strong>Author:</strong> {{this.article.Author}}</p>
     </div>
 
-<!-- Abstract -->
-    <p class="card-text text-muted lead text-justify fst-italic">
+    <!-- Abstract -->
+    <p class="card-text text-muted lead text-justify fst-italic" style="font-size: 1.1rem;">
       {{this.article.Abstract}}
     </p>
     <!-- Article Image -->
@@ -41,32 +45,28 @@
       <img class="img-fluid rounded border" 
            src="/static/imgs/news/{{this.article.NewsID}}/main_thumbs.jpg" 
            alt="{{this.article.Title}}" 
-           style="max-height: 600px; width: 100%; object-fit: cover;">
+           style="max-height: 600px; width: 100%; object-fit: cover; border-radius: 10px;">
     </div>
-
-    
 
     <!-- Content -->
-    <div class="card-text text-justify" style="line-height: 1.8;">
+    <div class="card-text text-justify" style="line-height: 1.8; font-size: 1rem;">
       {{{this.article.Content}}}
     </div>
-     <!-- Comment Section -->
-     <div class="container mt-5">
-  <h5>Comments for Article</h5>
+    <!-- Comment Section -->
+    <div class="container mt-5">
+      <h5 class="text-center" style="font-weight: bold;">Comments for Article</h5>
 
-  <!-- Existing Comments -->
-  <div id="comments-section">
-      <a class="btn btn-sm btn-primary" href="/articles/comment?id={{this.article.NewsID}}" role="button">
-            Add your comment  <i class="bi bi-pencil-square"></i>
-            </a>
-  </div>
-
+      <!-- Existing Comments -->
+      <div id="comments-section" class="text-center mt-3">
+        <a class="btn btn-sm btn-primary" href="/articles/comment?id={{this.article.NewsID}}" role="button">
+          Add your comment <i class="bi bi-pencil-square"></i>
+        </a>
+      </div>
     </div>
-  </div>
   </div>
 
   <!-- Footer -->
-  <div class="card-footer text-muted text-center py-3 justify-content-center">
+  <div class="card-footer text-muted text-center py-3" style="background-color: #e9ecef;">
     <p class="card-text">Thank you for reading!</p>
   </div>
 </div>

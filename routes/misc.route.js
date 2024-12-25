@@ -10,8 +10,10 @@ const upload = multer({ dest: './static/imgs/news/{articleId}/' });
 router.get('/upload', isAuth, async (req, res) => {
     try {
         const categories = await miscService.getAllCategories();
+        const tags = await miscService.getAllTags();
         res.render('vwMisc/upload', { 
             categories,
+            tags,
             user: req.session.authUser 
         });
     } catch (error) {
@@ -29,7 +31,9 @@ router.post('/upload', isAuth, async (req, res) => {
             author: req.session.authUser.name,
             status: 'pending',
             is_premium: req.body.is_premium,
-            catID: req.body.catID
+            catID: req.body.catID,
+            tagID: req.body.tagID,
+            tagName: req.body.tagName
         };
 
         const articleId = await miscService.addArticle(articleData);

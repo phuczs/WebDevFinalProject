@@ -20,6 +20,8 @@ import bnewRouter from './routes/bnews.route.js';
 import top10Router from './routes/top10.route.js';
 import footerRouter from './routes/footer.route.js';
 import userRouter from './routes/user.route.js';
+import tagRouter from './routes/tag.route.js';
+import tagService from './services/tag.service.js';
 
 const app = express();
 app.set('trust proxy', 1); // trust first proxy
@@ -58,6 +60,12 @@ app.use(async function (req, res, next) {
   next();
 });
 
+app.use(async function (req, res, next) {
+  const tags = await tagService.findAll();
+  res.locals.lcTags = tags;
+  next();
+});
+
 app.use(function (req, res, next) {
   if (req.session.auth === undefined) {
     req.session.auth = false;
@@ -90,6 +98,7 @@ import { isAuth, isAdmin, isAuthor, isEditor } from './middlewares/auth_mdw.js';
 app.use('/admin/categories', isAuth, isAdmin, categoryRouter);
 app.use('/admin/articles', isAuth, isAdmin, articleRouter);
 app.use('/admin/users', isAuth, isAdmin, userRouter);
+app.use('/admin/tags', isAuth, isAdmin, tagRouter);
 app.use('/misc', isAuth, isAuthor, isAdmin, miscRouter);
 app.use('/editor', isAuth, isEditor, isAdmin, editorRouter);
 
