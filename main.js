@@ -5,6 +5,9 @@ import bodyParser from 'body-parser';
 import numeral from 'numeral';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 import categoryRouter from './routes/category.route.js';
 import accountRouter from './routes/account.route.js';
@@ -26,7 +29,7 @@ import tagService from './services/tag.service.js';
 const app = express();
 app.set('trust proxy', 1); // trust first proxy
 app.use(session({
-  secret: 'SECRET_KEY',
+  secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: true,
   cookie: {}
@@ -99,9 +102,9 @@ app.use('/admin/categories', isAuth, isAdmin, categoryRouter);
 app.use('/admin/articles', isAuth, isAdmin, articleRouter);
 app.use('/admin/users', isAuth, isAdmin, userRouter);
 app.use('/admin/tags', isAuth, isAdmin, tagRouter);
-app.use('/misc', isAuth, isAuthor, isAdmin, miscRouter);
-app.use('/editor', isAuth, isEditor, isAdmin, editorRouter);
+app.use('/misc', isAuth, miscRouter);
+app.use('/editor', isAuth,editorRouter);
 
-app.listen(3000, function () {
-  console.log('Server started on http://localhost:3000');
+app.listen(process.env.PORT, function () {
+  console.log(`Server started on http://localhost:${process.env.PORT}`);
 });
